@@ -3,7 +3,7 @@ import { Instagram, Facebook, Twitter, Linkedin, ArrowRight } from 'lucide-react
 
 export default function Footer() {
     return (
-        <footer className="bg-black border-t border-gray-900 pt-20 pb-10 text-white" id="contact">
+        <footer className="bg-black pt-20 pb-10 text-white" id="contact">
             <div className="container">
 
                 {/* Newsletter */}

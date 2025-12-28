@@ -46,8 +46,14 @@ const collections = [
 
 export default function Collections() {
     return (
-        <section className="py-24 bg-white" id="categories">
-            <div className="container">
+        <section className="relative py-24 bg-[#FFC244]" id="categories">
+            {/* Top Curve: Blue to Yellow */}
+            <div className="absolute top-[-1px] left-0 w-full leading-[0] z-10 rotate-180">
+                <svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg" className="w-full h-[60px] block" preserveAspectRatio="none">
+                    <path fill="#4A90E2" fillOpacity="1" d="M0,0L48,10C96,20,192,40,288,50C384,60,480,60,576,50C672,40,768,20,864,15C960,10,1056,20,1152,30C1248,40,1344,50,1392,55L1440,60L1440,100L1392,100C1344,100,1248,100,1152,100C1056,100,960,100,864,100C768,100,672,100,576,100C480,100,384,100,288,100C192,100,96,100,48,100L0,100Z"></path>
+                </svg>
+            </div>
+            <div className="container relative z-20">
 
                 {/* Header */}
                 <motion.div

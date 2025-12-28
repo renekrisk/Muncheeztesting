@@ -1,15 +1,15 @@
 export default function Services() {
     return (
-        <section className="py-24 bg-white" id="about">
+        <section className="py-24 bg-[#4A90E2] text-white" id="about">
             <div className="container">
 
                 {/* Header */}
                 <div className="max-w-2xl mb-16">
-                    <h2 className="text-sm font-bold uppercase tracking-widest text-blue-600 mb-4">Our Services</h2>
-                    <h3 className="text-5xl md:text-6xl font-heading font-bold text-gray-900 leading-tight mb-6">
+                    <h2 className="text-sm font-bold uppercase tracking-widest text-[#FFC244] mb-4">Our Services</h2>
+                    <h3 className="text-5xl md:text-6xl font-heading font-bold text-white leading-tight mb-6">
                         Everything you need,<br />delivered to your door.
                     </h3>
-                    <p className="text-xl text-gray-600">
+                    <p className="text-xl text-white/90">
                         From your favorite meals to daily essentials and health products.
                     </p>
                 </div>
@@ -81,6 +81,7 @@ export default function Services() {
                     </a>
 
                 </div>
+
 
                 {/* Mission Statement */}
                 <div className="max-w-3xl mx-auto text-center border-t border-gray-200 pt-12">

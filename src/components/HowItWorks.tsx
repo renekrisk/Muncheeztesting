@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function HowItWorks() {
     return (
-        <section className="py-24 bg-gradient-to-br from-gray-50 to-white" id="how-it-works">
+        <section className="py-24 bg-[#FFC244]" id="how-it-works">
             <div className="container">
 
                 {/* Header */}

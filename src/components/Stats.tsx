@@ -34,7 +34,7 @@ const stats = [
 
 export default function Stats() {
     return (
-        <section className="py-24 bg-gray-900 text-white">
+        <section className="py-24 bg-[#FFC244] text-gray-900">
             <div className="container">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                     {stats.map((stat, index) => (

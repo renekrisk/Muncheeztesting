@@ -1,28 +1,28 @@
 const reviews = [
     {
         quote: "The intersection of speed and curated quality. Munchezz has managed to make daily delivery feel like an intentional lifestyle choice.",
-        author: "Sarah Montgomery",
-        location: "London, UK"
+        author: "SARAH WANJIKU",
+        location: "THIKA, KENYA"
     },
     {
         quote: "An exercise in restraint and efficiency. As a partner, the clarity of their platform allows us to focus entirely on the craft of our kitchen.",
-        author: "James Kensington",
-        location: "New York, USA"
+        author: "JAMES MBURU",
+        location: "NAIROBI, KENYA"
     }
 ];
 
 export default function Testimonials() {
     return (
-        <section className="py-40 bg-[#F9F8F6] border-y border-gray-200/50">
+        <section className="py-40 bg-[#FFC244] border-y border-black/5">
             <div className="container">
                 <div className="max-w-screen-xl mx-auto">
                     <div className="flex flex-col lg:flex-row gap-24 lg:gap-40 items-start">
 
                         {/* Static Editorial Header */}
                         <div className="lg:w-1/3 sticky top-32">
-                            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-400 mb-6 block">Refined Perspectives</span>
+                            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-800 mb-6 block">Refined Perspectives</span>
                             <h2 className="text-4xl font-heading font-medium text-gray-900 leading-[1.1] mb-8">
-                                Editorial <br /> Notes.
+                                Testimonials.
                             </h2>
                             <p className="text-gray-500 font-light leading-relaxed">
                                 A selection of shared experiences from our global collective of patrons and partners.
