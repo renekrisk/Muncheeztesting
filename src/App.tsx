@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -8,11 +9,15 @@ import PartnerSignup from "./pages/PartnerSignup";
 import CourierLogin from "./pages/CourierLogin";
 import CourierSignup from "./pages/CourierSignup";
 import LegalPage from "./pages/LegalPage";
+import WelcomeScreen from "./components/WelcomeScreen";
 
 function App() {
+  const [showWelcome, setShowWelcome] = useState(true);
+
   return (
     <Router>
       <div className="font-sans antialiased text-gray-900 bg-white">
+        {showWelcome && <WelcomeScreen onComplete={() => setShowWelcome(false)} />}
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
