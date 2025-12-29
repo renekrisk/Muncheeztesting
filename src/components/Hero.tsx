@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Search } from 'lucide-react';
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
 
 export default function Hero() {
     const ref = useRef(null);
