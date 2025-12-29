@@ -12,12 +12,20 @@ import LegalPage from "./pages/LegalPage";
 import WelcomeScreen from "./components/WelcomeScreen";
 
 function App() {
-  const [showWelcome, setShowWelcome] = useState(true);
+  const [showWelcome, setShowWelcome] = useState(() => {
+    // Only show if we haven't seen it in this session
+    return !sessionStorage.getItem('welcomeShown');
+  });
+
+  const handleWelcomeComplete = () => {
+    setShowWelcome(false);
+    sessionStorage.setItem('welcomeShown', 'true');
+  };
 
   return (
     <Router>
       <div className="font-sans antialiased text-gray-900 bg-white">
-        {showWelcome && <WelcomeScreen onComplete={() => setShowWelcome(false)} />}
+        {showWelcome && <WelcomeScreen onComplete={handleWelcomeComplete} />}
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

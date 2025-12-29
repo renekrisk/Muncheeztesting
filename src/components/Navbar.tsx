@@ -63,7 +63,7 @@ export default function Navbar() {
                     {/* Center: Editorial Navigation (Desktop Only) */}
                     <div className="hidden md:flex items-center gap-12">
                         {[
-                            { name: 'THE SELECTION', href: '/#categories' },
+                            { name: 'COLLECTIONS', href: '/#categories' },
                             { name: 'OUR STORY', href: '/legal/about-us' },
                             { name: 'KULA FITI', href: '/#app-download' },
                         ].map((item) => (
@@ -134,7 +134,7 @@ export default function Navbar() {
                         </button>
                         <div className="flex flex-col gap-10">
                             {[
-                                { name: 'THE SELECTION', href: '/#categories' },
+                                { name: 'COLLECTIONS', href: '/#categories' },
                                 { name: 'OUR STORY', href: '/legal/about-us' },
                                 { name: 'OUR TEAM', href: '/legal/our-team' },
                                 { name: 'KULA FITI', href: '/#app-download' },

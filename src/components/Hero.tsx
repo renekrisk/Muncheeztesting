@@ -83,15 +83,16 @@ export default function Hero() {
                 >
                     <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80 z-10" />
                     <img
-                        src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2500&auto=format&fit=crop"
+                        src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=60&w=1600&auto=format&fit=crop"
                         alt="Premium Gourmet Delivery"
                         className={`w-full h-full object-cover ${isDesktop ? 'scale-105' : 'scale-100 object-center'}`}
+                        loading="eager"
                     />
                 </motion.div>
             </motion.div>
 
-            {/* Cinematic Noise Texture */}
-            <div className="absolute inset-0 z-[5] opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
+            {/* Cinematic Noise Texture - Reduced Opacity for Performance */}
+            <div className="absolute inset-0 z-[5] opacity-[0.015] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
 
             <div className="container relative z-20 px-4 md:px-8 text-center pt-24 md:pt-20">
                 <div className="max-w-5xl mx-auto flex flex-col items-center">
@@ -111,7 +112,7 @@ export default function Hero() {
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, delay: 0.8 }}
-                            className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-3 md:mb-6"
+                            className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-white/5 border border-white/10 mb-3 md:mb-6"
                         >
                             <div className="w-1.5 h-1.5 rounded-full bg-[#4A90E2] animate-pulse" />
                             <span className="text-[9px] md:text-[10px] font-bold text-white uppercase tracking-widest">Coming Soon</span>

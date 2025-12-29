@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, Mail, Phone, MapPin, LucideIcon } from 'lucide-react';
+import { ArrowLeft, Mail, Phone, MapPin, LucideIcon, Hash, Globe, Shield, Zap, Camera, PenTool } from 'lucide-react';
 import { useEffect } from 'react';
 
 const pages: Record<string, {
@@ -8,7 +8,7 @@ const pages: Record<string, {
     subtitle: string;
     content: string;
     sections?: { title: string; body: string | string[] }[];
-    team?: { name: string; role: string; bio: string }[];
+    team?: { name: string; role: string; bio: string; icon: LucideIcon }[];
     contact?: { type: string; value: string; icon: LucideIcon }[];
 }> = {
     'about-us': {
@@ -18,7 +18,7 @@ const pages: Record<string, {
         sections: [
             {
                 title: "The Mission",
-                body: "Our goal is simple: to honor the hustle of Nairobi's local food scene while providing a premium, seamless experience for our customers. We believe that good food shouldn't just be accessible—it should be celebrated. We represent the bold, the flavorful, and the relentless spirit of the 254."
+                body: "Our goal is simple: to honor the hustle of Nairobi's local food scene while providing a premium, seamless experience for our customers. We believe that good food shouldn't just be accessible ... it should be celebrated. We represent the bold, the flavorful, and the relentless spirit of the 254."
             },
             {
                 title: "The Vision",
@@ -30,45 +30,51 @@ const pages: Record<string, {
                     "Respect the Craft: Every meal is handled with the care it deserves.",
                     "Hustle & Flow: We move with the city's energy, fast and intentional.",
                     "Community First: We exist for Nairobi, by Nairobi.",
-                    "Transparency: No hidden fees, no AI jargon—just real talk."
+                    "Transparency: No hidden fees, no AI jargon ... just real talk."
                 ]
             }
         ]
     },
     'our-team': {
-        title: 'Our Team',
-        subtitle: 'The Core Collective.',
-        content: "Meet the founders behind the movement. Driven by a shared love for Nairobi and a commitment to excellence.",
+        title: 'The Collective',
+        subtitle: 'Architects of the Culture.',
+        content: "We are a group of creators, builders, and believers. United by the hustle and driven to digitize the soul of Nairobi.",
         team: [
             {
-                name: "Dean Ndere",
+                name: "Dean N",
                 role: "Founder, CEO",
-                bio: "Leading the vision and strategy behind Munchezz. Focused on building a platform that truly serves the 254."
+                bio: "Webbing the fabric of Nairobi's food scene into a digital tapestry. For Dean, it's not just about delivery; it's about defining the city's new standard.",
+                icon: Globe
             },
             {
-                name: "Kris Kamau",
+                name: "Kris K",
                 role: "CTO, Co-founder",
-                bio: "The engineering heartbeat. Building the high-performance architecture that keeps the city's favorite flavors moving."
+                bio: "Crafting the binary heartbeat of Munchezz. If the city doesn't sleep, neither does the code. Building infrastructure that moves as fast as the 254.",
+                icon: Hash
             },
             {
-                name: "Bradley Kahuria",
-                role: "Sales & Marketing, Co-founder",
-                bio: "The voice of the brand. Connecting local legends to our growing community and expanding the Munchezz footprint."
+                name: "Bradley K",
+                role: "Sales & Marketing",
+                bio: "Bridging the gap between the boardroom and the bodega. Keeping the brand authentic, loud, and undisputedly Nairobi.",
+                icon: Zap
             },
             {
-                name: "Evans Ngure",
-                role: "Law, Policy & Research, Co-founder",
-                bio: "Safeguarding the movement. Ensuring transparency, fairness, and excellence in every policy and partnership."
+                name: "Evans N",
+                role: "Law & Policy",
+                bio: "Ensuring the hustle is honorable. Policy, protection, and people ... building a foundation that protects our riders and partners alike.",
+                icon: Shield
             },
             {
-                name: "Sharleen Nyambura",
+                name: "Sharleen M",
                 role: "Vlogs & Community",
-                bio: "The lens on the street. Showcasing the vibrant stories of our city's partners and riders through authentic, daily content."
+                bio: "Capturing the raw, unfiltered energy of the streets. Every frame she shoots tells a story of grit, flavor, and the people behind the food.",
+                icon: Camera
             },
             {
-                name: "Zipporah Nyambura",
+                name: "Zipporah N",
                 role: "Content & Media",
-                bio: "Curating the visual heartbeat of Munchezz. Transforming food delivery into a digital experience through cinematic storytelling."
+                bio: "Turning delivery into cinema. Because Nairobi isn't just a place, it's a feeling, and Zipporah makes sure you see it in high definition.",
+                icon: PenTool
             }
         ]
     },
@@ -83,7 +89,7 @@ const pages: Record<string, {
             },
             {
                 title: "What suburbs do you cover?",
-                body: "We currently cover Westlands, Kilimani, Lavington, Kileleshwa, and the CBD, with expansion across the wider Nairobi area coming soon. If you're outside these zones, stay tuned—the movement is growing fast."
+                body: "We currently cover Westlands, Kilimani, Lavington, Kileleshwa, and the CBD, with expansion across the wider Nairobi area coming soon. If you're outside these zones, stay tuned ... the movement is growing fast."
             },
             {
                 title: "Can I pay with M-Pesa?",
@@ -167,8 +173,9 @@ export default function LegalPage() {
     }
 
     return (
-        <div className="min-h-screen bg-black text-white pt-40 pb-20 px-8">
-            <div className="max-w-4xl mx-auto">
+        <div className="min-h-screen bg-black text-white pt-40 pb-20 px-6 md:px-8 overflow-hidden">
+
+            <div className="max-w-5xl mx-auto relative z-10">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -179,7 +186,7 @@ export default function LegalPage() {
                         className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.4em] text-[#4A90E2] hover:opacity-70 transition-all group"
                     >
                         <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-                        Return to Selection
+                        Return
                     </button>
                 </motion.div>
 
@@ -196,7 +203,7 @@ export default function LegalPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="text-6xl md:text-8xl font-heading font-extralight tracking-tighter mb-12"
+                    className="text-5xl md:text-8xl font-heading font-extralight tracking-tighter mb-12"
                 >
                     {page.title}
                 </motion.h1>
@@ -207,26 +214,45 @@ export default function LegalPage() {
                     transition={{ delay: 0.5 }}
                     className="prose prose-invert max-w-none"
                 >
-                    <p className="text-xl md:text-2xl text-white/70 font-light leading-relaxed font-serif italic mb-12">
+                    <p className="text-xl md:text-2xl text-white/70 font-light leading-relaxed font-serif italic mb-16 max-w-3xl">
                         {page.content}
                     </p>
 
                     <div className="h-[1px] w-full bg-white/10 mb-20" />
 
-                    {/* Team Section */}
+                    {/* Team Section V2 - Clean Digital ID Cards */}
                     {page.team && (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-20">
                             {page.team.map((member, i) => (
                                 <motion.div
                                     key={member.name}
                                     initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.6 + (i * 0.1) }}
-                                    className="p-8 border border-white/5 rounded-3xl bg-white/[0.02]"
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.1 * i }}
+                                    className="relative p-6 md:p-8 border border-white/5 rounded-2xl bg-[#0A0A0A] hover:border-white/20 transition-all duration-300"
                                 >
-                                    <h3 className="text-2xl font-heading mb-1">{member.name}</h3>
-                                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#4A90E2] block mb-6">{member.role}</span>
-                                    <p className="text-sm text-white/50 leading-relaxed font-light">{member.bio}</p>
+                                    {/* Tech Header */}
+                                    <div className="flex items-start justify-between mb-8">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-[#4A90E2]">
+                                                <member.icon size={16} strokeWidth={1.5} />
+                                            </div>
+                                            <div className="h-[1px] w-12 bg-white/10" />
+                                        </div>
+                                        <span className="text-[9px] font-mono text-white/30 tracking-widest">ID_0{i + 1}</span>
+                                    </div>
+
+                                    {/* Name & Role */}
+                                    <h3 className="text-3xl font-heading font-bold text-white mb-2 tracking-tight">{member.name}</h3>
+                                    <p className="text-[#4A90E2] text-xs font-bold uppercase tracking-[0.2em] mb-6">{member.role}</p>
+
+                                    <div className="h-[1px] w-full bg-white/5 mb-6" />
+
+                                    {/* Bio */}
+                                    <p className="text-sm text-white/50 leading-relaxed font-mono tracking-tight">
+                                        {member.bio}
+                                    </p>
                                 </motion.div>
                             ))}
                         </div>
@@ -346,7 +372,7 @@ export default function LegalPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-[10px] text-white/20 uppercase tracking-[0.2em] leading-loose font-bold">
                         <p>
-                            Munchezz — Built for the 254. Dedicated to the vision of a connected, flavorful city.
+                            Munchezz ... Built for the 254. Dedicated to the vision of a connected, flavorful city.
                         </p>
                         <p className="md:text-right">
                             © 2025 Munchezz. All rights reserved.
