@@ -30,7 +30,7 @@ const stats = [
 
 export default function Stats() {
     return (
-        <section className="relative py-40 bg-[#D4AF37] text-gray-900 overflow-hidden">
+        <section className="relative py-24 lg:py-32 bg-[#D4AF37] text-gray-900 overflow-hidden">
 
             {/* Editorial Background Texture */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay grayscale">

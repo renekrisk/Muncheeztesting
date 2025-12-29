@@ -4,7 +4,7 @@ import googlePlayIcon from '../assets/google-play-icon.png';
 
 export default function AppDownload() {
     return (
-        <section className="relative py-40 bg-[#00A082] text-white overflow-hidden" id="app-download">
+        <section className="relative py-24 lg:py-32 bg-[#00A082] text-white overflow-hidden" id="app-download">
 
             {/* Editorial Background Texture */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay grayscale">

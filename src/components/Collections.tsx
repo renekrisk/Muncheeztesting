@@ -56,7 +56,7 @@ export default function Collections() {
     const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
     return (
-        <section ref={sectionRef} className="relative py-24 lg:py-40 bg-[#D4AF37] overflow-hidden" id="categories">
+        <section ref={sectionRef} className="relative py-20 lg:py-32 bg-[#D4AF37] overflow-hidden" id="categories">
 
             {/* Top Curve: Blue to Gold */}
             <div className="absolute top-[-1px] left-0 w-full leading-[0] z-10 rotate-180">

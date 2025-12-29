@@ -28,7 +28,7 @@ export default function HowItWorks() {
     ];
 
     return (
-        <section ref={ref} className="relative py-40 bg-[#D4AF37] overflow-hidden" id="how-it-works">
+        <section ref={ref} className="relative py-24 lg:py-32 bg-[#D4AF37] overflow-hidden" id="how-it-works">
 
             {/* Editorial Background Texture */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay grayscale">
@@ -63,7 +63,7 @@ export default function HowItWorks() {
                     {/* Vertical Line */}
                     <div className="absolute left-[31px] top-0 bottom-0 w-[0.5px] bg-gray-900/10"></div>
 
-                    <div className="space-y-40">
+                    <div className="space-y-24 lg:space-y-32">
                         {steps.map((step, index) => (
                             <motion.div
                                 key={index}

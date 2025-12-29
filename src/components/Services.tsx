@@ -42,7 +42,7 @@ export default function Services() {
     const ref = useRef(null);
 
     return (
-        <section ref={ref} className="relative py-40 bg-[#4A90E2] text-white overflow-hidden" id="about">
+        <section ref={ref} className="relative py-24 lg:py-32 bg-[#4A90E2] text-white overflow-hidden" id="about">
 
             {/* Faint Background Texture */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay grayscale">
