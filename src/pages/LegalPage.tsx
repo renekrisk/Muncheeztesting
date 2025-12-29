@@ -59,6 +59,16 @@ const pages: Record<string, {
                 name: "Evans Ngure",
                 role: "Law, Policy & Research, Co-founder",
                 bio: "Safeguarding the movement. Ensuring transparency, fairness, and excellence in every policy and partnership."
+            },
+            {
+                name: "Sharleen Nyambura",
+                role: "Vlogs & Community",
+                bio: "The lens on the street. Showcasing the vibrant stories of our city's partners and riders through authentic, daily content."
+            },
+            {
+                name: "Zipporah Nyambura",
+                role: "Content & Media",
+                bio: "Curating the visual heartbeat of Munchezz. Transforming food delivery into a digital experience through cinematic storytelling."
             }
         ]
     },
