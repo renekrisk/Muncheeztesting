@@ -37,7 +37,7 @@ export default function WelcomeScreen({ onComplete }: WelcomeScreenProps) {
         <AnimatePresence>
             {isVisible && (
                 <motion.div
-                    className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center overflow-hidden h-[100dvh]"
+                    className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center overflow-hidden h-screen supports-[height:100dvh]:h-[100dvh]"
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)", transition: { duration: 1, ease: [0.76, 0, 0.24, 1] } }}
                 >
@@ -85,11 +85,11 @@ export default function WelcomeScreen({ onComplete }: WelcomeScreenProps) {
                         className="absolute bottom-0 left-0 h-1.5 md:h-1 bg-[#4A90E2] w-full origin-left"
                     />
 
-                    {/* Cinematic Grain/Texture Overlay */}
-                    <div className="absolute inset-0 z-[1] opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
+                    {/* Cinematic Grain/Texture Overlay - Reduced for iOS */}
+                    <div className="absolute inset-0 z-[1] opacity-[0.015] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
 
-                    {/* Ambient Glow */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[#4A90E2] rounded-full blur-[80px] md:blur-[120px] opacity-10 pointer-events-none" />
+                    {/* Ambient Glow - Reduced for iOS */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[#4A90E2] rounded-full blur-[50px] md:blur-[120px] opacity-10 pointer-events-none" />
                 </motion.div>
             )}
         </AnimatePresence>

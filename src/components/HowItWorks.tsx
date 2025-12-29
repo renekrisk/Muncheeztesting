@@ -71,7 +71,7 @@ export default function HowItWorks() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                                 viewport={{ amount: 0.8 }}
-                                className="relative pl-24 group"
+                                className="relative pl-20 md:pl-24 group"
                             >
                                 {/* Circle Node */}
                                 <div className="absolute left-0 top-0 w-16 h-16 rounded-full bg-[#D4AF37] border border-gray-900/20 flex items-center justify-center z-10 group-hover:bg-gray-900 group-hover:text-white transition-all duration-700">

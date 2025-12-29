@@ -16,7 +16,7 @@ export default function AppDownload() {
             </div>
 
             <div className="container relative z-20 px-8 lg:px-20">
-                <div className="max-w-4xl flex flex-col md:flex-row items-center justify-between gap-16">
+                <div className="max-w-4xl flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
 
                     {/* Content */}
                     <motion.div
@@ -42,13 +42,13 @@ export default function AppDownload() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         viewport={{ once: true }}
-                        className="flex gap-8 items-center"
+                        className="flex gap-6 md:gap-8 items-center"
                     >
                         <a href="#" className="transition-all duration-500 hover:scale-110 hover:-translate-y-1 p-1 hover:bg-[#4A90E2] rounded-[22px]">
-                            <img src={appStoreIcon} alt="App Store" className="w-16 h-16 shadow-2xl rounded-2xl invert" />
+                            <img src={appStoreIcon} alt="App Store" className="w-16 h-16 md:w-20 md:h-20 shadow-2xl rounded-2xl invert" />
                         </a>
                         <a href="#" className="transition-all duration-500 hover:scale-110 hover:-translate-y-1 p-1 hover:bg-white/10 rounded-[22px]">
-                            <img src={googlePlayIcon} alt="Google Play" className="w-16 h-16 shadow-2xl rounded-2xl" />
+                            <img src={googlePlayIcon} alt="Google Play" className="w-16 h-16 md:w-20 md:h-20 shadow-2xl rounded-2xl" />
                         </a>
                     </motion.div>
 

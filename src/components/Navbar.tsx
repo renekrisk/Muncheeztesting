@@ -112,7 +112,7 @@ export default function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                        className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-3xl pt-40 px-12 flex flex-col justify-between pb-16"
+                        className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-3xl pt-40 px-12 flex flex-col justify-between pb-32"
                     >
                         {/* Mobile Menu Logo */}
                         <Link

@@ -64,7 +64,7 @@ export default function Hero() {
     };
 
     return (
-        <section ref={ref} className="relative h-[100dvh] min-h-[600px] flex items-center justify-center bg-black overflow-hidden support-dvh">
+        <section ref={ref} className="relative h-screen supports-[height:100dvh]:h-[100dvh] min-h-[600px] flex items-center justify-center bg-black overflow-hidden">
 
             {/* Cinematic Background Layer with Parallax */}
             <motion.div

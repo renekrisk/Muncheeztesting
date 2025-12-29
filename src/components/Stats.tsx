@@ -42,7 +42,7 @@ export default function Stats() {
             </div>
 
             <div className="container relative z-10 px-8 lg:px-20">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 lg:gap-12">
                     {stats.map((stat, index) => (
                         <motion.div
                             key={index}
