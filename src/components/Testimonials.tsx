@@ -13,7 +13,7 @@ const reviews = [
 
 export default function Testimonials() {
     return (
-        <section className="py-40 bg-[#FFC244] border-y border-black/5">
+        <section className="py-40 bg-[#D4AF37] border-y border-black/5">
             <div className="container">
                 <div className="max-w-screen-xl mx-auto">
                     <div className="flex flex-col lg:flex-row gap-24 lg:gap-40 items-start">

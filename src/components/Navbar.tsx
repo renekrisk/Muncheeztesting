@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 
 export default function Navbar() {
@@ -41,10 +41,10 @@ export default function Navbar() {
                     {/* CTA Button */}
                     <div className="flex items-center gap-2">
                         <a
-                            href="/#app-download"
-                            className="hidden md:flex items-center gap-2 bg-black text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:scale-105 hover:shadow-lg transition-all duration-300"
+                            href="#"
+                            className="hidden md:flex items-center gap-2 bg-black text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:scale-105 hover:shadow-lg transition-all duration-300"
                         >
-                            Get the App <ArrowUpRight size={14} className="text-gray-400" />
+                            Log in
                         </a>
 
                         {/* Mobile Toggle */}
