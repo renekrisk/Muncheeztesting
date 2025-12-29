@@ -43,6 +43,16 @@ export default function Hero() {
                             Nairobi's Selection
                         </motion.span>
 
+                        <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1, delay: 0.8 }}
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6"
+                        >
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#4A90E2] animate-pulse" />
+                            <span className="text-[10px] font-bold text-white uppercase tracking-widest">Coming Soon</span>
+                        </motion.div>
+
                         <div className="overflow-hidden">
                             <motion.h1
                                 initial={{ y: "100%" }}
