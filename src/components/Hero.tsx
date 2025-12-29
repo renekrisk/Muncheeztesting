@@ -47,6 +47,8 @@ export default function Hero() {
     const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
     const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
+    const EASE = [0.16, 1, 0.3, 1] as const;
+
     const titleVariants = {
         animate: {
             transition: {
@@ -58,7 +60,7 @@ export default function Hero() {
 
     const letterVariants = {
         initial: { y: 100, opacity: 0 },
-        animate: { y: 0, opacity: 1, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
+        animate: { y: 0, opacity: 1, transition: { duration: 1, ease: EASE } }
     };
 
     return (
@@ -68,18 +70,24 @@ export default function Hero() {
             <motion.div
                 style={{
                     y,
-                    scale,
-                    x: isDesktop ? x : 0,
-                    y: isDesktop ? yParallax : 0
+                    scale
                 }}
                 className="absolute inset-0 z-0"
             >
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80 z-10" />
-                <img
-                    src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2500&auto=format&fit=crop"
-                    alt="Premium Gourmet Delivery"
-                    className={`w-full h-full object-cover ${isDesktop ? 'scale-105' : 'scale-100 object-center'}`}
-                />
+                <motion.div
+                    style={{
+                        x: isDesktop ? x : 0,
+                        y: isDesktop ? yParallax : 0
+                    }}
+                    className="w-full h-full"
+                >
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80 z-10" />
+                    <img
+                        src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2500&auto=format&fit=crop"
+                        alt="Premium Gourmet Delivery"
+                        className={`w-full h-full object-cover ${isDesktop ? 'scale-105' : 'scale-100 object-center'}`}
+                    />
+                </motion.div>
             </motion.div>
 
             {/* Cinematic Noise Texture */}

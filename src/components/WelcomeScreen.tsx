@@ -17,9 +17,11 @@ export default function WelcomeScreen({ onComplete }: WelcomeScreenProps) {
         return () => clearTimeout(timer);
     }, [onComplete]);
 
+    const EASE = [0.16, 1, 0.3, 1] as const;
+
     const letterVariants = {
         initial: { y: 100, opacity: 0 },
-        animate: { y: 0, opacity: 1, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
+        animate: { y: 0, opacity: 1, transition: { duration: 1, ease: EASE } }
     };
 
     const containerVariants = {
