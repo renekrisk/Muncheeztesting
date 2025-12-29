@@ -41,15 +41,26 @@ export default function Navbar() {
                         : 'py-8 bg-transparent'}
                 `}
             >
-                <div className="max-w-7xl mx-auto px-8 flex items-center justify-between">
-                    {/* Brand */}
-                    <Link to="/" className="flex items-center gap-2 group">
-                        <span className="font-heading font-bold text-2xl tracking-tighter text-white">
-                            Munchezz<span className="text-[#4A90E2]">.</span>
-                        </span>
-                    </Link>
+                <div className="max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between">
+                    {/* Left: Hamburger (Mobile) + Brand */}
+                    <div className="flex items-center gap-4">
+                        {/* Mobile Toggle */}
+                        <button
+                            className="md:hidden text-white/70 hover:text-white transition-colors"
+                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        >
+                            {mobileMenuOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
+                        </button>
 
-                    {/* Editorial Navigation */}
+                        {/* Brand */}
+                        <Link to="/" className="hidden md:flex items-center gap-2 group">
+                            <span className="font-heading font-bold text-lg md:text-2xl tracking-tighter text-white">
+                                Munchezz<span className="text-[#4A90E2]">.</span>
+                            </span>
+                        </Link>
+                    </div>
+
+                    {/* Center: Editorial Navigation (Desktop Only) */}
                     <div className="hidden md:flex items-center gap-12">
                         {[
                             { name: 'THE SELECTION', href: '/#categories' },
@@ -67,8 +78,9 @@ export default function Navbar() {
                         ))}
                     </div>
 
-                    {/* CTAs */}
+                    {/* Right: Login (Desktop & Mobile) */}
                     <div className="flex items-center gap-8">
+                        {/* Desktop Login */}
                         <Link
                             to="/login"
                             className={`
@@ -81,13 +93,13 @@ export default function Navbar() {
                             Login
                         </Link>
 
-                        {/* Mobile Toggle */}
-                        <button
-                            className="md:hidden p-2 text-white/50 hover:text-white transition-colors"
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        {/* Mobile Login */}
+                        <Link
+                            to="/login"
+                            className="md:hidden text-xs font-bold uppercase tracking-widest text-white hover:text-[#4A90E2] transition-colors"
                         >
-                            {mobileMenuOpen ? <X size={24} strokeWidth={1} /> : <Menu size={24} strokeWidth={1} />}
-                        </button>
+                            Login
+                        </Link>
                     </div>
                 </div>
             </motion.nav>
@@ -102,6 +114,17 @@ export default function Navbar() {
                         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                         className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-3xl pt-40 px-12 flex flex-col justify-between pb-16"
                     >
+                        {/* Mobile Menu Logo */}
+                        <Link
+                            to="/"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="absolute top-8 left-8 flex items-center gap-2 group"
+                        >
+                            <span className="font-heading font-bold text-2xl tracking-tighter text-white">
+                                Munchezz<span className="text-[#4A90E2]">.</span>
+                            </span>
+                        </Link>
+
                         {/* Close Button */}
                         <button
                             onClick={() => setMobileMenuOpen(false)}

@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Search } from 'lucide-react';
+import { Search, ArrowRight } from 'lucide-react';
 import { useRef } from 'react';
 
 export default function Hero() {
@@ -88,8 +88,11 @@ export default function Hero() {
                             <input
                                 type="text"
                                 placeholder="Enter delivery address"
-                                className="w-full pl-12 pr-4 py-4 bg-white/95 backdrop-blur-sm text-gray-900 placeholder:text-gray-400 rounded-full outline-none focus:ring-2 focus:ring-white/40 transition-all text-sm shadow-lg"
+                                className="w-full pl-12 pr-12 py-4 bg-white/95 backdrop-blur-sm text-gray-900 placeholder:text-gray-400 rounded-full outline-none focus:ring-2 focus:ring-white/40 transition-all text-sm shadow-lg"
                             />
+                            <button className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-gray-900 text-white rounded-full hover:bg-[#4A90E2] transition-colors shadow-md">
+                                <ArrowRight size={14} />
+                            </button>
                         </div>
                         <button className="text-xs text-white/50 hover:text-white transition-colors">
                             Use current location
