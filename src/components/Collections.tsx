@@ -10,28 +10,28 @@ const collections = [
         description: "Warm pastries and fresh brews from the city's cult-favorite bakers.",
         image: "https://images.unsplash.com/photo-1544681280-d25a782adc9b?q=80&w=2080",
         icon: Heart,
-        layout: "lg:col-span-8 lg:pr-24",
-        aspect: "aspect-[16/10] lg:aspect-[16/9]"
+        span: "lg:col-span-8 lg:row-span-2",
+        aspect: "h-[500px] lg:h-full"
     },
     {
         id: "02",
-        name: "Kula Fiti",
-        tagline: "Always Comforting",
-        description: "The flavors that feel like home, handled with respect and delivered fast.",
-        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=2099",
-        icon: Flame,
-        layout: "lg:col-span-4 lg:mt-80",
-        aspect: "aspect-[4/5]"
-    },
-    {
-        id: "03",
         name: "Hidden Gems",
         tagline: "The Vault",
         description: "Exclusive menus from Nairobi's most high-end kitchens.",
         image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=2028",
         icon: Utensils,
-        layout: "lg:col-span-5 lg:-mt-40",
-        aspect: "aspect-[4/5]"
+        span: "lg:col-span-4 lg:row-span-2",
+        aspect: "h-[500px] lg:h-full"
+    },
+    {
+        id: "03",
+        name: "Kula Fiti",
+        tagline: "Comfort Food",
+        description: "The flavors that feel like home, handled with respect.",
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=2099",
+        icon: Flame,
+        span: "lg:col-span-4",
+        aspect: "h-[400px]"
     },
     {
         id: "04",
@@ -40,8 +40,8 @@ const collections = [
         description: "Everything you need from the supermarket, minus the traffic.",
         image: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=2087",
         icon: Globe,
-        layout: "lg:col-span-7 lg:mt-20 lg:pl-12",
-        aspect: "aspect-[21/9] lg:aspect-[16/7]"
+        span: "lg:col-span-8",
+        aspect: "h-[400px]"
     }
 ];
 
@@ -52,11 +52,11 @@ export default function Collections() {
         offset: ["start end", "end start"]
     });
 
-    const titleY = useTransform(scrollYProgress, [0, 0.5], [100, 0]);
+    const titleY = useTransform(scrollYProgress, [0, 0.5], [50, 0]);
     const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
     return (
-        <section ref={sectionRef} className="relative py-20 lg:py-32 bg-[#D4AF37] overflow-hidden" id="categories">
+        <section ref={sectionRef} className="relative py-24 lg:py-40 bg-[#D4AF37] overflow-hidden" id="categories">
 
             {/* Top Curve: Blue to Gold */}
             <div className="absolute top-[-1px] left-0 w-full leading-[0] z-10 rotate-180">
@@ -66,7 +66,7 @@ export default function Collections() {
             </div>
 
             {/* Editorial Background Texture */}
-            <div className="absolute inset-0 opacity-[0.02] pointer-events-none mix-blend-overlay grayscale">
+            <div className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-overlay grayscale">
                 <img
                     src="https://images.unsplash.com/photo-1543353071-873f17a7a088?q=80&w=2000"
                     alt=""
@@ -74,116 +74,90 @@ export default function Collections() {
                 />
             </div>
 
-            <div className="container relative z-20 px-8 lg:px-20">
+            <div className="container relative z-20 px-6 lg:px-20">
 
                 {/* Header - Huge Architectural Typo */}
-                <div className="relative mb-20 lg:mb-64">
-                    <motion.span
-                        style={{ opacity }}
-                        className="text-[20vw] font-heading font-black text-black/5 absolute -top-[10vw] -left-[2vw] whitespace-nowrap pointer-events-none"
-                    >
-                        COLLECTION
-                    </motion.span>
-
-                    <div className="relative z-10 space-y-8">
-                        <motion.span
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 1 }}
-                            viewport={{ once: true }}
-                            className="text-[10px] font-bold uppercase tracking-[0.8em] text-gray-900/40 block ml-1"
-                        >
-                            The 254 Selection
-                        </motion.span>
+                <div className="relative mb-20 lg:mb-40 text-center lg:text-left">
+                    <motion.div className="relative z-10 space-y-6">
+                        <div className="flex items-center justify-center lg:justify-start gap-4 mb-8">
+                            <div className="h-[1px] w-12 bg-black/20" />
+                            <span className="text-xs font-bold uppercase tracking-[0.4em] text-black/60">
+                                The 254 Selection
+                            </span>
+                            <div className="h-[1px] w-12 bg-black/20" />
+                        </div>
                         <motion.h2
                             style={{ y: titleY }}
-                            className="text-6xl md:text-9xl font-heading font-light text-gray-900 leading-[0.8] tracking-tighter"
+                            className="text-6xl md:text-8xl lg:text-[10rem] font-heading font-black text-gray-900 leading-[0.8] tracking-tighter"
                         >
-                            The Nairobi <br />
-                            <span className="text-gray-900/10 italic">Select.</span>
+                            NAIROBI <br />
+                            <span className="text-white drop-shadow-lg italic font-serif font-light tracking-normal">Gems.</span>
                         </motion.h2>
-                    </div>
+                    </motion.div>
                 </div>
 
-                {/* Boutique Lookbook Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-y-24 lg:gap-y-0 lg:gap-x-0">
+                {/* Experimental Bento Grid Layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
                     {collections.map((item, index) => (
                         <motion.div
                             key={item.id}
-                            initial={{ opacity: 0, y: 100 }}
+                            initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            viewport={{ once: true, amount: 0.1 }}
-                            className={`relative group ${item.layout}`}
+                            transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            className={`relative group ${item.span}`}
                         >
-                            <div className="relative">
-                                {/* Floating Number Indicator */}
-                                <span className="absolute -top-10 -left-6 text-7xl font-heading font-black text-black/5 group-hover:text-black/10 transition-colors duration-700 pointer-events-none lg:block hidden">
-                                    {item.id}
-                                </span>
+                            <div className="relative h-full overflow-hidden rounded-[2rem] bg-gray-900 shadow-xl isolate">
+                                {/* Image Layer */}
+                                <div className={`w-full ${item.aspect} overflow-hidden`}>
+                                    <img
+                                        src={item.image}
+                                        alt={item.name}
+                                        className="w-full h-full object-cover scale-100 group-hover:scale-110 transition-transform duration-[1200ms] ease-out will-change-transform opacity-80 group-hover:opacity-60"
+                                    />
+                                </div>
 
-                                {/* Card Body */}
-                                <div className="space-y-12">
-                                    <div className={`relative ${item.aspect} rounded-[3rem] overflow-hidden shadow-[0_64px_128px_-32px_rgba(0,0,0,0.3)] bg-gray-100 ring-1 ring-black/5 transform group-hover:scale-[1.02] transition-transform duration-[2000ms] ease-out`}>
-                                        <img
-                                            src={item.image}
-                                            alt={item.name}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[3000ms] ease-out"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-40 group-hover:opacity-60 transition-opacity duration-1000" />
+                                {/* Overlay Gradient */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none" />
 
-                                        {/* Minimal Hover Overlay */}
-                                        <div className="absolute inset-0 flex flex-col justify-end p-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                                            <div className="flex items-center gap-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-700">
-                                                <div className="h-px w-12 bg-white/40" />
-                                                <span className="text-[10px] font-bold uppercase tracking-widest text-white/60">View Details</span>
-                                            </div>
+                                {/* Content Layer - Bottom Aligned */}
+                                <div className="absolute bottom-0 left-0 w-full p-8 lg:p-12 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                    <div className="flex items-end justify-between mb-4">
+                                        <div>
+                                            <span className="block text-[10px] font-bold uppercase tracking-[0.3em] text-[#D4AF37] mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                                {item.tagline}
+                                            </span>
+                                            <h3 className="text-3xl lg:text-5xl font-heading font-bold text-white mb-2 leading-none tracking-tight">
+                                                {item.name}
+                                            </h3>
+                                        </div>
+                                        <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:bg-[#D4AF37] group-hover:border-[#D4AF37] group-hover:text-black transition-all duration-300 opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 origin-right">
+                                            <ArrowRight size={20} className="-rotate-45" />
                                         </div>
                                     </div>
+                                    <p className="text-sm lg:text-base text-white/70 font-light max-w-sm line-clamp-2 group-hover:line-clamp-none transition-all duration-500">
+                                        {item.description}
+                                    </p>
+                                </div>
 
-                                    {/* Editorial Metadata, High density, premium details */}
-                                    <div className="space-y-6 lg:max-w-md">
-                                        <div className="flex items-center justify-between">
-                                            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-900/30">{item.tagline}</span>
-                                            <div className="w-10 h-10 rounded-full border border-gray-900/10 flex items-center justify-center text-gray-900 group-hover:bg-gray-900 group-hover:text-white transition-all duration-500">
-                                                <ArrowRight size={16} className="-rotate-45" />
-                                            </div>
-                                        </div>
-                                        <h3 className="text-4xl lg:text-5xl font-heading font-light text-gray-900 tracking-tighter leading-none">
-                                            {item.name}
-                                        </h3>
-                                        <p className="text-base text-gray-600 font-light leading-relaxed">
-                                            {item.description}
-                                        </p>
-                                    </div>
+                                {/* Floating ID Number */}
+                                <div className="absolute top-6 left-6 z-20">
+                                    <span className="text-xs font-bold text-white/30 border border-white/20 px-3 py-1 rounded-full backdrop-blur-md">
+                                        {item.id}
+                                    </span>
                                 </div>
                             </div>
                         </motion.div>
                     ))}
                 </div>
 
-                {/* Final Lookbook Section Stat */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 1.5 }}
-                    viewport={{ once: true }}
-                    className="mt-32 lg:mt-64 pt-16 lg:pt-24 border-t border-gray-900/5 flex flex-col md:flex-row justify-between items-center gap-12"
-                >
-                    <div className="flex gap-16">
-                        <div className="space-y-2">
-                            <span className="text-[10px] font-bold text-gray-900/20 uppercase tracking-widest block">Partnership</span>
-                            <span className="text-2xl font-heading font-light">Curated Global Network</span>
-                        </div>
-                        <div className="space-y-2">
-                            <span className="text-[10px] font-bold text-gray-900/20 uppercase tracking-widest block">Quality Control</span>
-                            <span className="text-2xl font-heading font-light">100% Manual Selection</span>
-                        </div>
-                    </div>
-                    <a href="#about" className="text-sm font-bold uppercase tracking-[0.4em] hover:text-gray-900/60 transition-colors">
-                        Discover More
-                    </a>
-                </motion.div>
+                {/* Footer Stat/Action */}
+                <div className="mt-20 lg:mt-32 text-center">
+                    <button className="inline-flex items-center gap-3 px-8 py-4 bg-gray-900 text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-gray-900 transition-all duration-300 group">
+                        Explore Full Selection
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                    </button>
+                </div>
             </div>
         </section>
     );
