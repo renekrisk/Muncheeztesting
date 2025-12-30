@@ -19,7 +19,7 @@ export default function CourierSignup() {
                 </Link>
                 <Link to="/" className="flex justify-center mb-12 group transition-all">
                     <span className="font-heading font-bold text-3xl tracking-tighter text-gray-900 group-hover:text-[#00A082]">
-                        Munchezz<span className="text-[#00A082]">.</span>
+                        Muncheez<span className="text-[#00A082]">.</span>
                     </span>
                 </Link>
                 <div className="text-center space-y-4">

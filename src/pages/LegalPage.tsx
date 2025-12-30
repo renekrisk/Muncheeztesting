@@ -14,7 +14,7 @@ const pages: Record<string, {
     'about-us': {
         title: 'Our Identity',
         subtitle: 'The 254 Delivery Soul.',
-        content: "Munchezz isn't just an app. It's a bridge. We connect Nairobi's legendary kitchens and hidden gems to your table. Built for the city, by the city.",
+        content: "Muncheez isn't just an app. It's a bridge. We connect Nairobi's legendary kitchens and hidden gems to your table. Built for the city, by the city.",
         sections: [
             {
                 title: "The Mission",
@@ -49,7 +49,7 @@ const pages: Record<string, {
             {
                 name: "Kris K",
                 role: "CTO, Co-founder",
-                bio: "Crafting the binary heartbeat of Munchezz. If the city doesn't sleep, neither does the code. Building infrastructure that moves as fast as the 254.",
+                bio: "Crafting the binary heartbeat of Muncheez. If the city doesn't sleep, neither does the code. Building infrastructure that moves as fast as the 254.",
                 icon: Hash
             },
             {
@@ -81,7 +81,7 @@ const pages: Record<string, {
     'faq': {
         title: 'Common Questions',
         subtitle: 'Support at your pace.',
-        content: "Everything you need to know about navigating the Munchezz experience.",
+        content: "Everything you need to know about navigating the Muncheez experience.",
         sections: [
             {
                 title: "How long does delivery take?",
@@ -106,7 +106,7 @@ const pages: Record<string, {
         subtitle: 'Direct Access.',
         content: "Based in the heart of Nairobi. We're always listening for feedback, partnership ideas, or support requests.",
         contact: [
-            { type: "Email", value: "hello@munchezz.com", icon: Mail },
+            { type: "Email", value: "hello@muncheez.com", icon: Mail },
             { type: "Phone", value: "+254 700 000 000", icon: Phone },
             { type: "HQ", value: "Westlands, Nairobi, KE", icon: MapPin }
         ]
@@ -118,7 +118,7 @@ const pages: Record<string, {
         sections: [
             {
                 title: "1. Acceptance of Terms",
-                body: "By accessing or using the Munchezz platform, you agree to be bound by these terms. We believe in mutual respect across our community, and these rules ensure a fair experience for everyone."
+                body: "By accessing or using the Muncheez platform, you agree to be bound by these terms. We believe in mutual respect across our community, and these rules ensure a fair experience for everyone."
             },
             {
                 title: "2. User Conduct",
@@ -372,10 +372,10 @@ export default function LegalPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-[10px] text-white/20 uppercase tracking-[0.2em] leading-loose font-bold">
                         <p>
-                            Munchezz ... Built for the 254. Dedicated to the vision of a connected, flavorful city.
+                            Muncheez ... Built for the 254. Dedicated to the vision of a connected, flavorful city.
                         </p>
                         <p className="md:text-right">
-                            © 2025 Munchezz. All rights reserved.
+                            © 2025 Muncheez. All rights reserved.
                         </p>
                     </div>
                 </motion.div>

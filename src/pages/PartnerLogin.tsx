@@ -18,7 +18,7 @@ export default function PartnerLogin() {
                 </Link>
                 <Link to="/" className="flex justify-center mb-12 group transition-all">
                     <span className="font-heading font-bold text-3xl tracking-tighter text-gray-900 group-hover:text-[#D4AF37]">
-                        Munchezz<span className="text-[#D4AF37]">.</span>
+                        Muncheez<span className="text-[#D4AF37]">.</span>
                     </span>
                 </Link>
                 <div className="text-center space-y-4">
