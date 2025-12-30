@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 
 const offerings = [
     {
@@ -7,39 +8,38 @@ const offerings = [
         category: "Restaurant Delivery",
         title: "The Kitchens",
         description: "From Westlands' fine dining to the hidden gems of Kilimani. Delivered hot.",
-        image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop",
-        aspect: "aspect-[3/4]"
+        image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200",
+        color: "#F5F5F5"
     },
     {
         id: "02",
         category: "Supermarket & Retail",
         title: "The Pantry",
         description: "Farm-to-fork goodness and household essentials from the supermarkets you trust.",
-        image: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=800&auto=format&fit=crop",
-        aspect: "aspect-[4/5]",
-        offset: "lg:mt-32"
+        image: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200",
+        color: "#E0E0E0"
     },
     {
         id: "03",
         category: "Health & Wellness",
         title: "The Pharmacy",
         description: "Quick, discreet delivery for your health essentials when you need them most.",
-        image: "https://plus.unsplash.com/premium_photo-1671721438260-1adb3749253f?q=80&w=800&auto=format&fit=crop",
-        aspect: "aspect-[3/4]"
+        image: "https://plus.unsplash.com/premium_photo-1671721438260-1adb3749253f?q=80&w=1200",
+        color: "#F5F5F5"
     },
     {
         id: "04",
         category: "Bakery & Cafe",
         title: "The Morning",
         description: "Warm pastries and fresh sourdough from the city’s favorite artisan bakers.",
-        image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop",
-        aspect: "aspect-[4/5]",
-        offset: "lg:-mt-24"
+        image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200",
+        color: "#E0E0E0"
     }
 ];
 
 export default function Services() {
     const ref = useRef(null);
+    const [activeId, setActiveId] = useState("01");
 
     return (
         <section ref={ref} className="relative py-20 lg:py-32 bg-[#4A90E2] text-white overflow-hidden" id="about">
@@ -54,89 +54,116 @@ export default function Services() {
             </div>
 
             <div className="container relative z-10 px-6 lg:px-20">
-                <div className="lg:grid lg:grid-cols-12 lg:gap-24">
-
-                    {/* Left Side: Sticky Header */}
-                    <div className="lg:col-span-4 mb-12 lg:mb-0">
-                        <div className="lg:sticky lg:top-40 space-y-8 lg:space-y-12 text-center lg:text-left">
-                            <motion.div
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 1 }}
-                                viewport={{ once: true }}
-                            >
-                                <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-white/40 mb-6 block">Our Offerings</span>
-                                <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading font-light text-white leading-[1.1] tracking-tighter">
-                                    Everything <br className="hidden lg:block" />
-                                    You Need.
-                                </h2>
-                            </motion.div>
-
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                transition={{ duration: 1, delay: 0.3 }}
-                                viewport={{ once: true }}
-                                className="space-y-6 max-w-sm mx-auto lg:mx-0"
-                            >
-                                <div className="h-px w-20 bg-white/20 mx-auto lg:mx-0" />
-                                <p className="text-lg text-white/60 font-light leading-relaxed italic">
-                                    "From fine dining to pharmacy essentials."
-                                </p>
-                            </motion.div>
-                        </div>
-                    </div>
-
-                    {/* Right Side: Horizontal Scroll (Mobile) / Staggered Grid (Desktop) */}
-                    <div className="lg:col-span-8 -mx-6 lg:mx-0">
-                        {/* Mobile: Horizontal Scroll Container */}
-                        <div className="flex lg:grid lg:grid-cols-2 overflow-x-auto lg:overflow-visible gap-6 lg:gap-x-12 lg:gap-y-32 snap-x snap-mandatory px-6 lg:px-0 pb-12 lg:pb-0 scrollbar-hide">
-                            {offerings.map((item, index) => (
-                                <motion.div
-                                    key={item.id}
-                                    initial={{ opacity: 0, y: 40 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 1, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                                    viewport={{ once: true }}
-                                    className={`relative group shrink-0 w-[85vw] sm:w-[350px] lg:w-auto snap-center ${item.offset || ''}`}
-                                >
-                                    <div className="space-y-4 lg:space-y-6 mb-6 lg:mb-12">
-                                        <div className="flex items-center gap-4">
-                                            <span className="text-[10px] font-bold uppercase tracking-widest text-white/30">{item.id} / {item.category}</span>
-                                            <div className="h-px flex-1 bg-white/10" />
-                                        </div>
-                                        <h3 className="text-3xl lg:text-4xl font-heading font-light tracking-tight">{item.title}</h3>
-                                        <p className="text-sm lg:text-lg text-white/50 font-light leading-relaxed max-w-sm">
-                                            {item.description}
-                                        </p>
-                                    </div>
-
-                                    <div className={`relative ${item.aspect} rounded-[2rem] overflow-hidden shadow-2xl group-hover:-translate-y-2 transition-transform duration-700 bg-white/5 ring-1 ring-white/10`}>
-                                        <img
-                                            src={item.image}
-                                            alt={item.title}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-60" />
-
-                                        {/* Subtle Overlay Label */}
-                                        <div className="absolute inset-x-0 bottom-0 p-8 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 hidden lg:block">
-                                            <button className="text-[10px] font-bold uppercase tracking-widest bg-white text-black px-6 py-3 rounded-full hover:bg-white/90">
-                                                Explore
-                                            </button>
-                                        </div>
-
-                                        {/* Mobile Tap Indicator */}
-                                        <div className="absolute bottom-6 right-6 lg:hidden w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
-                                            <div className="w-1 h-1 bg-white rounded-full" />
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-
+                {/* Header */}
+                <div className="mb-12 lg:mb-20 text-center lg:text-left">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                    >
+                        <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-white/40 mb-4 block">Our Offerings</span>
+                        <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading font-light text-white leading-[1.1] tracking-tighter">
+                            Essentials, <br className="hidden lg:block" />
+                            Elevated.
+                        </h2>
+                    </motion.div>
                 </div>
+
+                {/* Desktop: Hover-Accordion Interactive Layout */}
+                <div className="hidden lg:flex h-[600px] gap-4">
+                    {offerings.map((item) => (
+                        <motion.div
+                            key={item.id}
+                            className="relative h-full rounded-[2rem] overflow-hidden cursor-pointer group"
+                            layout
+                            initial={{ flex: 1 }}
+                            animate={{ flex: activeId === item.id ? 3 : 1 }}
+                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                            onHoverStart={() => setActiveId(item.id)}
+                            onClick={() => setActiveId(item.id)}
+                        >
+                            {/* Background Image */}
+                            <img
+                                src={item.image}
+                                alt={item.title}
+                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                            />
+                            <div className={`absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500 ${activeId === item.id ? 'bg-black/0' : ''}`} />
+
+                            {/* Gradient Overlay for Text Readability */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
+
+                            {/* Content */}
+                            <div className="absolute bottom-0 left-0 w-full p-10 flex flex-col justify-end">
+                                <div className="flex items-center gap-4 mb-4">
+                                    <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border ${activeId === item.id ? 'bg-white text-black border-white' : 'text-white/60 border-white/20'}`}>
+                                        {item.category}
+                                    </span>
+                                </div>
+
+                                <h3 className={`font-heading font-light tracking-tight transition-all duration-300 ${activeId === item.id ? 'text-5xl mb-6' : 'text-3xl mb-2 text-white/80'}`}>
+                                    {item.title}
+                                </h3>
+
+                                {/* Description - Only Visible when Active */}
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{
+                                        opacity: activeId === item.id ? 1 : 0,
+                                        height: activeId === item.id ? 'auto' : 0
+                                    }}
+                                    className="overflow-hidden"
+                                >
+                                    <p className="text-lg text-white/80 font-light leading-relaxed max-w-md mb-8">
+                                        {item.description}
+                                    </p>
+                                    <button className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white hover:text-white/80 transition-colors group/btn">
+                                        Explore
+                                        <ArrowUpRight size={14} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                                    </button>
+                                </motion.div>
+                            </div>
+
+                            {/* ID Number (Top Right) */}
+                            <div className="absolute top-8 right-8">
+                                <span className="text-xl font-heading font-bold text-white/20">{item.id}</span>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Mobile: Horizontal Snap Scroll (Preserved) */}
+                <div className="lg:hidden -mx-6">
+                    <div className="flex overflow-x-auto gap-6 snap-x snap-mandatory px-6 pb-12 scrollbar-hide">
+                        {offerings.map((item, index) => (
+                            <div
+                                key={item.id}
+                                className="relative shrink-0 w-[85vw] aspect-[4/5] rounded-[2rem] overflow-hidden snap-center group"
+                            >
+                                <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    className="absolute inset-0 w-full h-full object-cover"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-90" />
+
+                                <div className="absolute bottom-0 left-0 w-full p-8">
+                                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/60 mb-3 block">
+                                        {item.category}
+                                    </span>
+                                    <h3 className="text-3xl font-heading font-light text-white mb-4">
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-sm text-white/70 font-light leading-relaxed">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
             </div>
         </section>
     );
