@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import { Search, ArrowRight } from 'lucide-react';
 import { useRef } from 'react';
+import { useLocality } from '../context/LocalityContext';
 
 export default function Hero() {
     const ref = useRef(null);
+    const { city } = useLocality();
     const EASE = [0.16, 1, 0.3, 1] as const;
 
     const fadeScale = {
@@ -42,7 +44,7 @@ export default function Hero() {
                     transition={{ duration: 1, delay: 0.5 }}
                     className="text-[10px] font-bold text-white/30 uppercase tracking-[0.6em] mb-12"
                 >
-                    Nairobi's Selection
+                    {city}'s Selection
                 </motion.span>
 
                 <motion.h1
@@ -110,7 +112,7 @@ export default function Hero() {
                     >
                         <span className="block text-[9px] font-bold text-[#D4AF37] uppercase tracking-[0.4em] mb-2">Selection 01</span>
                         <h2 className="text-4xl font-serif italic font-light text-white leading-tight">
-                            The <br /> Nairobi <br /> <span className="font-sans font-bold not-italic text-5xl tracking-tighter">SELECTION.</span>
+                            The <br /> {city} <br /> <span className="font-sans font-bold not-italic text-5xl tracking-tighter">SELECTION.</span>
                         </h2>
                     </motion.div>
                 </div>
@@ -124,7 +126,7 @@ export default function Hero() {
                         transition={{ delay: 0.2 }}
                         className="text-xs text-white/50 font-medium uppercase tracking-[0.3em] mb-6"
                     >
-                        Muncheez: <br /> 254 Delivered.
+                        Muncheez: <br /> {city} Delivered.
                     </motion.p>
 
                     <motion.div

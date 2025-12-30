@@ -10,6 +10,7 @@ import CourierLogin from "./pages/CourierLogin";
 import CourierSignup from "./pages/CourierSignup";
 import LegalPage from "./pages/LegalPage";
 import WelcomeScreen from "./components/WelcomeScreen";
+import { LocalityProvider } from "./context/LocalityContext";
 
 function App() {
   const [showWelcome, setShowWelcome] = useState(() => {
@@ -23,25 +24,27 @@ function App() {
   };
 
   return (
-    <Router>
-      <div className="font-sans antialiased text-gray-900 bg-white">
-        {showWelcome && <WelcomeScreen onComplete={handleWelcomeComplete} />}
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/legal/:slug" element={<LegalPage />} />
-          {/* Client Auth */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          {/* Partner Auth */}
-          <Route path="/partner/login" element={<PartnerLogin />} />
-          <Route path="/partner/signup" element={<PartnerSignup />} />
-          {/* Courier Auth */}
-          <Route path="/courier/login" element={<CourierLogin />} />
-          <Route path="/courier/signup" element={<CourierSignup />} />
-        </Routes>
-      </div>
-    </Router>
+    <LocalityProvider>
+      <Router>
+        <div className="font-sans antialiased text-gray-900 bg-white">
+          {showWelcome && <WelcomeScreen onComplete={handleWelcomeComplete} />}
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/legal/:slug" element={<LegalPage />} />
+            {/* Client Auth */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            {/* Partner Auth */}
+            <Route path="/partner/login" element={<PartnerLogin />} />
+            <Route path="/partner/signup" element={<PartnerSignup />} />
+            {/* Courier Auth */}
+            <Route path="/courier/login" element={<CourierLogin />} />
+            <Route path="/courier/signup" element={<CourierSignup />} />
+          </Routes>
+        </div>
+      </Router>
+    </LocalityProvider>
   );
 }
 

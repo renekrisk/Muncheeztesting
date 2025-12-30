@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocality } from '../context/LocalityContext';
 
 export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
+    const { city } = useLocality();
 
     // Hide navbar on auth-related pages
     const authPaths = [
@@ -53,10 +55,12 @@ export default function Navbar() {
                         </button>
 
                         {/* Brand */}
-                        <Link to="/" className="hidden md:flex items-center gap-2 group">
+                        <Link to="/" className="hidden md:flex items-center gap-4 group">
                             <span className="font-heading font-bold text-lg md:text-2xl tracking-tighter text-white">
                                 Muncheez<span className="text-[#4A90E2]">.</span>
                             </span>
+                            <div className="h-4 w-[1px] bg-white/10 hidden lg:block" />
+                            <span className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em] pt-1 hidden lg:block">{city}</span>
                         </Link>
                     </div>
 
@@ -118,11 +122,12 @@ export default function Navbar() {
                         <Link
                             to="/"
                             onClick={() => setMobileMenuOpen(false)}
-                            className="absolute top-8 left-8 flex items-center gap-2 group"
+                            className="absolute top-8 left-8 flex flex-col gap-1 group"
                         >
                             <span className="font-heading font-bold text-2xl tracking-tighter text-white">
                                 Muncheez<span className="text-[#4A90E2]">.</span>
                             </span>
+                            <span className="text-[9px] font-bold text-white/30 uppercase tracking-[0.3em]">{city} Selection</span>
                         </Link>
 
                         {/* Close Button */}
