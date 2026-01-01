@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Check } from 'lucide-react';
+
 import Footer from '../components/Footer';
 
 /**
