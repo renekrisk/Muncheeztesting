@@ -100,6 +100,17 @@ const pages: Record<string, PageData> = {
             { type: "Phone", value: "+254 700 000 000", icon: Phone },
             { type: "HQ", value: "Westlands, Nairobi, KE", icon: MapPin }
         ]
+    },
+    'help-center': {
+        type: 'utility',
+        title: 'Help Center',
+        subtitle: 'Support',
+        content: "Need assistance? Browse our FAQs or get in touch directly.",
+        sections: [
+            { title: "Where is my order?", body: "You can track your order in real-time via the 'Orders' tab in the app. If you need further assistance, please contact support." },
+            { title: "I have a problem with my food.", body: "We take quality seriously. If your order is incorrect or unsatisfactory, please use the 'Report Issue' button on the order details page or call us immediately." },
+            { title: "Payment issues?", body: "If a payment failed but you were charged, the reversal usually happens automatically within 24 hours. If not, contact us with your transaction reference." }
+        ]
     }
 };
 
