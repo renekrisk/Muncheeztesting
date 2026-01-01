@@ -189,7 +189,7 @@ export const socialService = {
         localStorage.setItem(NOTIFICATIONS_KEY, JSON.stringify(notifications));
     },
 
-    createGiftOrder: (friendId: string, items: any[], sender: User) => {
+    createGiftOrder: (friendId: string, _items: any[], sender: User) => {
         const friend = socialService.getFriends().find(f => f.id === friendId);
         if (friend) {
             socialService.addNotification({
