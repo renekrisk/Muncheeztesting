@@ -12,7 +12,7 @@ export default function Footer() {
                 {/* Newsletter - Soulful Update */}
                 <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end gap-8 mb-16 border-b border-white/5 pb-16">
                     <div className="max-w-xl text-center lg:text-left">
-                        <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.4em] mb-3 block">Newsletter</span>
+                        <span className="text-[10px] font-bold text-[#4A90E2] uppercase tracking-[0.4em] mb-3 block">Newsletter</span>
                         <h3 className="text-3xl md:text-5xl font-heading font-light mb-4 tracking-tight">Join the Fam<span className="text-[#4A90E2]">.</span></h3>
                         <p className="text-white/40 font-light leading-relaxed max-w-sm mx-auto lg:mx-0 text-xs md:text-sm">
                             Get the 254 scoop: exclusive deals, city favorites, and the soul of Nairobi delivered to your inbox.
@@ -25,7 +25,7 @@ export default function Footer() {
                                 placeholder="Your email address"
                                 className="bg-white/5 border border-white/10 text-white px-6 py-4 rounded-2xl w-full focus:outline-none focus:bg-white/10 focus:border-white/20 transition-all placeholder:text-white/20 text-sm"
                             />
-                            <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-black font-bold p-2.5 rounded-xl hover:bg-[#D4AF37] transition-colors">
+                            <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-black font-bold p-2.5 rounded-xl hover:bg-[#4A90E2] hover:text-white transition-colors">
                                 <ArrowRight size={20} />
                             </button>
                         </form>
@@ -71,7 +71,6 @@ export default function Footer() {
                             {[
                                 { name: 'About Us', slug: 'about-us' },
                                 { name: 'Our Team', slug: 'our-team' },
-                                { name: 'Partner', href: '/partner/login' },
                                 { name: 'Join Rider', href: '/courier/login' }
                             ].map((item) => (
                                 <li key={item.name}>

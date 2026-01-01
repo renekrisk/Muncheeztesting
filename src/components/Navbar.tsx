@@ -1,33 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const location = useLocation();
-
-    // Hide navbar on auth-related pages
-    const authPaths = [
-        '/login',
-        '/signup',
-        '/partner/login',
-        '/partner/signup',
-        '/courier/login',
-        '/courier/signup',
-        '/admin/login'
-    ];
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 50);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-
-    if (authPaths.includes(location.pathname)) {
-        return null;
-    }
 
     return (
         <>
@@ -65,6 +49,7 @@ export default function Navbar() {
                     <div className="hidden md:flex items-center gap-12">
                         {[
                             { name: 'COLLECTIONS', href: '/#categories' },
+                            { name: 'FEED', href: '/social' },
                             { name: 'OUR STORY', href: '/legal/about-us' },
                             { name: 'KULA FITI', href: '/#app-download' },
                         ].map((item) => (
@@ -136,6 +121,7 @@ export default function Navbar() {
                         <div className="flex flex-col gap-10">
                             {[
                                 { name: 'COLLECTIONS', href: '/#categories' },
+                                { name: 'FEED', href: '/social' },
                                 { name: 'OUR STORY', href: '/legal/about-us' },
                                 { name: 'OUR TEAM', href: '/legal/our-team' },
                                 { name: 'KULA FITI', href: '/#app-download' },
