@@ -68,12 +68,12 @@ const pages: Record<string, PageData> = {
         subtitle: 'Architects of Culture',
         content: "We are a group of creators, builders, and believers. United by the hustle and driven to digitize the soul of Nairobi.",
         team: [
-            { name: "Dean N", role: "Founder, CEO", bio: "Webbing the fabric of Nairobi's food scene into a digital tapestry. For Dean, it's not just about delivery; it's about defining the city's new standard." },
-            { name: "Kris K", role: "CTO, Co-founder", bio: "Crafting the binary heartbeat of Muncheez. If the city doesn't sleep, neither does the code. Building infrastructure that moves as fast as the 254." },
-            { name: "Bradley K", role: "Sales & Marketing", bio: "Bridging the gap between the boardroom and the bodega. Keeping the brand authentic, loud, and undisputedly Nairobi." },
-            { name: "Evans N", role: "Law & Policy", bio: "Ensuring the hustle is honorable. Policy, protection, and people—building a foundation that protects our riders and partners alike." },
-            { name: "Sharleen M", role: "Social Media Manager", bio: "Amplifying the Muncheez voice across every platform. Sharleen turns moments into movements, keeping our community engaged, inspired, and always in the loop." },
-            { name: "Zipporah N", role: "Brand & Culinary Director", bio: "The aesthetic compass of Muncheez. Leading our search for Nairobi's hidden culinary gems and defining our visual soul with a camera in one hand and a fork in the other." }
+            { name: "Dean N", role: "Founder & CEO", bio: "Webbing the fabric of Nairobi's food scene into a digital tapestry. For Dean, it's not just about delivery; it's about defining the city's new standard." },
+            { name: "Kris K", role: "CTO & Co-founder", bio: "Crafting the binary heartbeat of Muncheez. If the city doesn't sleep, neither does the code. Building infrastructure that moves as fast as the 254." },
+            { name: "Bradley K", role: "Sales & Marketing & Co-founder", bio: "Bridging the gap between the boardroom and the bodega. Keeping the brand authentic, loud, and undisputedly Nairobi." },
+            { name: "Evans N", role: "Law & Policy & Co-founder", bio: "Ensuring the hustle is honorable. Policy, protection, and people—building a foundation that protects our riders and partners alike." },
+            { name: "Sharleen M", role: "Social Media & Co-founder", bio: "Amplifying the Muncheez voice across every platform. Sharleen turns moments into movements, keeping our community engaged, inspired, and always in the loop." },
+            { name: "Zipporah N", role: "Creative Director & Co-founder", bio: "The aesthetic compass of Muncheez. Leading our search for Nairobi's hidden culinary gems and defining our visual soul with a camera in one hand and a fork in the other." }
         ]
     },
 
