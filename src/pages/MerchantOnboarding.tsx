@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-    Building2,
     MapPin,
     Clock,
     CheckCircle2,
     ChevronRight,
     ChevronLeft,
-    Upload,
     FileSpreadsheet,
     UtensilsCrossed,
     Smartphone,
@@ -16,8 +14,6 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { parseInventoryCSV, CSVParseResult } from '../utils/csvParser';
-import { Product } from '../types/schema';
-
 // Types mimicking the Architecture
 type OnboardingStep = 'BUSINESS' | 'INVENTORY' | 'FINANCE' | 'REVIEW';
 type MerchantType = 'Restaurant' | 'Supermarket' | 'Pharmacy' | 'Water';

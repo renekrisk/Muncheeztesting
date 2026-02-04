@@ -46,7 +46,7 @@ export default function SupermarketStore({ merchant = {}, products = [] }: Super
     const [viewingCategoryDeepDive, setViewingCategoryDeepDive] = useState<string | null>(null);
 
     // Modal & Menu States 
-    const [userLocation, setUserLocation] = useState('Lavington, Nairobi');
+    const [_userLocation, setUserLocation] = useState('Lavington, Nairobi');
     const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -98,7 +98,7 @@ export default function SupermarketStore({ merchant = {}, products = [] }: Super
         }
     }, [viewingCategoryDeepDive]);
 
-    const renderProductCard = (product: any, size: 'mini' | 'standard' = 'mini', isCarousel: boolean = false) => {
+    const renderProductCard = (product: any, _size: 'mini' | 'standard' = 'mini', isCarousel: boolean = false) => {
         const cartItem = items.find(i => i.id === product.id);
         const quantity = cartItem ? cartItem.quantity : 0;
         const hasDiscount = product.promo || product.id.includes('discount');

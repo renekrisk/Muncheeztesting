@@ -144,7 +144,7 @@ export default function MerchantDashboard() {
                                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                                     className="flex items-center gap-2 font-heading font-bold text-gray-900 leading-none group text-left hover:text-[#D4AF37] transition-colors"
                                 >
-                                    {activeBusiness.name}
+                                    {activeBusiness.businessName}
                                     <ChevronDown size={14} className={`text-gray-400 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
                                 </button>
                             </div>

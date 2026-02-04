@@ -46,7 +46,7 @@ export default function ProductsView({ merchantType }: ProductsViewProps) {
 // ==========================================
 // 1. RETAIL / SUPERMARKET VIEW (Industrial Ledger)
 // ==========================================
-function RetailInventoryView({ type }: { type: MerchantType }) {
+function RetailInventoryView({ type: _type }: { type: MerchantType }) {
     return (
         <div className="space-y-8">
             {/* Tools Panel */}

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 import { Merchant, Product, Order } from '../types/schema';
 
 // 🧠 MOCK DB CONTEXT
@@ -73,7 +73,7 @@ export const MockDatabaseProvider = ({ children }: { children: ReactNode }) => {
     ]);
 
     // 2. SEED DATA - PRODUCTS
-    const [products, setProducts] = useState<Product[]>([
+    const [products] = useState<Product[]>([
         // Java House Items (Java House Uber Eats Seeding)
         { id: 'p1', merchantId: 'm1', name: 'Java Special Chicken Curry', price: 1110, isAvailable: true, categoryId: 'Featured items', description: '#1 most liked' },
         { id: 'p2', merchantId: 'm1', name: 'Teriyaki Beef Stir Fry', price: 1270, isAvailable: true, categoryId: 'Featured items', description: '#2 most liked' },
@@ -143,7 +143,7 @@ export const MockDatabaseProvider = ({ children }: { children: ReactNode }) => {
 
     // SELECTORS
     const getMerchantProducts = (merchantId: string) => products.filter(p => p.merchantId === merchantId);
-    const getMerchantOrders = (merchantId: string) => orders.filter(o => {
+    const getMerchantOrders = (_merchantId: string) => orders.filter(_o => {
         // In a real app, orders belong to a merchant. 
         // Our schema doesn't explicitly have merchantId on Order top-level yet (it's implicit),
         // but for this mock we need to filter? 

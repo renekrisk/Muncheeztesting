@@ -1,10 +1,8 @@
 import {
-    BarChart3,
     TrendingUp,
     TrendingDown,
     Calendar,
     AlertTriangle,
-    Package,
     Users,
     Clock,
     ArrowUpRight
