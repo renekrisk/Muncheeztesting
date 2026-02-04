@@ -1,3 +1,4 @@
+```typescript
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -5,9 +6,6 @@ import {
     Clock,
     CheckCircle2,
     MoreVertical,
-    MapPin,
-    Phone,
-    ChevronDown,
     Printer,
     Truck,
     AlertCircle,
@@ -59,10 +57,11 @@ export default function OrdersView({ orders, onUpdateStatus }: OrdersViewProps) 
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`px-6 py-3 text-[10px] font-bold uppercase tracking-widest transition-all ${activeTab === tab.id
-                                    ? 'bg-black text-white'
-                                    : 'bg-white border border-gray-100 text-gray-400 hover:text-black hover:border-black'
-                                }`}
+                            className={`px - 6 py - 3 text - [10px] font - bold uppercase tracking - widest transition - all ${
+    activeTab === tab.id
+    ? 'bg-black text-white'
+    : 'bg-white border border-gray-100 text-gray-400 hover:text-black hover:border-black'
+} `}
                         >
                             {tab.label}
                         </button>
@@ -87,16 +86,16 @@ export default function OrdersView({ orders, onUpdateStatus }: OrdersViewProps) 
                                 layoutId={order.id}
                                 onClick={() => setSelectedOrder(order)}
                                 className={`
-                                    cursor-pointer p-6 bg-white border-l-4 shadow-sm hover:shadow-md transition-all relative overflow-hidden group
-                                    ${selectedOrder?.id === order.id ? 'border-[#D4AF37]' : 'border-transparent'}
-                                `}
+cursor - pointer p - 6 bg - white border - l - 4 shadow - sm hover: shadow - md transition - all relative overflow - hidden group
+                                    ${ selectedOrder?.id === order.id ? 'border-[#D4AF37]' : 'border-transparent' }
+`}
                             >
                                 <div className="flex justify-between items-start mb-4">
                                     <div>
                                         <div className="text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] mb-1">#{order.id.slice(-6)}</div>
                                         <div className="font-heading font-bold text-xl">{order.customer.name}</div>
                                     </div>
-                                    <div className={`px-2 py-1 rounded-md text-[8px] font-black uppercase tracking-tighter text-white ${getStatusColor(order.status)}`}>
+                                    <div className={`px - 2 py - 1 rounded - md text - [8px] font - black uppercase tracking - tighter text - white ${ getStatusColor(order.status) } `}>
                                         {order.status.replace(/_/g, ' ')}
                                     </div>
                                 </div>
@@ -108,7 +107,7 @@ export default function OrdersView({ orders, onUpdateStatus }: OrdersViewProps) 
 
                                 {/* Items Sneak Peak */}
                                 <div className="mt-4 pt-4 border-t border-dashed border-gray-100 italic text-[11px] text-gray-400">
-                                    {order.items.map((i: any) => `${i.quantity}x ${i.name}`).join(', ').slice(0, 45)}...
+                                    {order.items.map((i: any) => `${ i.quantity }x ${ i.name } `).join(', ').slice(0, 45)}...
                                 </div>
                             </motion.div>
                         ))

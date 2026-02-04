@@ -1,13 +1,14 @@
 import {
-    MapPin,
-    Navigation,
+    Truck,
+    Package,
+    Search,
+    Filter,
+    ChevronRight,
+    Plus,
     Phone,
     AlertTriangle,
     RefreshCw,
-    CheckCircle2,
-    Clock,
-    Bike,
-    MoreVertical
+    Bike
 } from 'lucide-react';
 
 export default function DeliveriesView() {

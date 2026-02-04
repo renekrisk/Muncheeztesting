@@ -1,11 +1,13 @@
+```
 import {
+    Users,
     Search,
+    Filter,
+    ArrowUpRight,
     Star,
-    AlertTriangle,
-    MoreHorizontal,
-    Phone,
-    MapPin,
-    ShieldAlert
+    Mail,
+    Plus,
+    MoreHorizontal
 } from 'lucide-react';
 
 export default function CustomersView() {

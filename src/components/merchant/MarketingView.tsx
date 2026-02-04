@@ -1,15 +1,10 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
 import {
-    Megaphone,
-    Zap,
-    Gift,
     TrendingUp,
     Users,
+    ArrowUpRight,
+    Calendar,
     ChevronRight,
-    Plus,
-    Target,
-    BarChart
+    Plus
 } from 'lucide-react';
 
 export default function MarketingView() {

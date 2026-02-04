@@ -2,8 +2,6 @@ import {
     MessageCircle,
     Mail,
     Phone,
-    HelpCircle,
-    FileText,
     Search,
     ChevronRight,
     AlertTriangle
