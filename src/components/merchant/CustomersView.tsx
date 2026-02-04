@@ -1,11 +1,6 @@
 import {
-    Users,
     Search,
-    Filter,
-    ArrowUpRight,
     Star,
-    Mail,
-    Plus,
     MoreHorizontal,
     Phone,
     MapPin,
