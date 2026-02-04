@@ -3,9 +3,7 @@ import {
     ArrowUpRight,
     ArrowDownLeft,
     Download,
-    FileText,
     AlertCircle,
-    CheckCircle2,
     Clock,
     DollarSign,
     RefreshCcw
