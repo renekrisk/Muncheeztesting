@@ -18,6 +18,9 @@ import MerchantOnboarding from './pages/MerchantOnboarding';
 import StoreListing from './pages/customer/StoreListing';
 import StoreFront from './pages/customer/StoreFront';
 
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 function AppContent() {
   const location = useLocation();
   // Navbar shows on homepage and Our Story
@@ -44,7 +47,14 @@ function AppContent() {
         <Route path="/partner/login" element={<PartnerLogin />} />
         <Route path="/partner/signup" element={<PartnerSignup />} />
         <Route path="/partner/onboarding" element={<MerchantOnboarding />} />
-        <Route path="/partner/dashboard" element={<MerchantDashboard />} />
+        <Route
+          path="/partner/dashboard"
+          element={
+            <ProtectedRoute>
+              <MerchantDashboard />
+            </ProtectedRoute>
+          }
+        />
         {/* Courier Auth */}
         <Route path="/courier/login" element={<CourierLogin />} />
         <Route path="/courier/signup" element={<CourierSignup />} />
@@ -68,10 +78,12 @@ function App() {
 
   return (
     <Router>
-      <div className="font-sans antialiased text-gray-900 bg-white">
-        {showWelcome && <WelcomeScreen onComplete={handleWelcomeComplete} />}
-        <AppContent />
-      </div>
+      <AuthProvider>
+        <div className="font-sans antialiased text-gray-900 bg-white">
+          {showWelcome && <WelcomeScreen onComplete={handleWelcomeComplete} />}
+          <AppContent />
+        </div>
+      </AuthProvider>
     </Router>
   );
 }

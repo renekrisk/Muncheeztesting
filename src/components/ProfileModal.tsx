@@ -2,6 +2,8 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, HelpCircle, LogOut, Share2, FileText, X } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 interface ProfileModalProps {
     isOpen: boolean;
@@ -9,10 +11,23 @@ interface ProfileModalProps {
 }
 
 const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
+    const { user, profile, signOut } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        await signOut();
+        onClose();
+        navigate('/');
+    };
+
+    if (!user) return null;
+
+    const initial = profile?.full_name ? profile.full_name.charAt(0).toUpperCase() : user.email?.charAt(0).toUpperCase() || '?';
+
     return (
         <AnimatePresence>
             {isOpen && (
-                <div className="fixed inset-0 z-[60] flex items-center justify-center px-6">
+                <div className="fixed inset-0 z-[60] flex items-center justify-center px-6 text-black">
                     {/* Backdrop */}
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -40,28 +55,32 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
 
                         <div className="p-6 flex flex-col items-center pt-8">
                             {/* Avatar Section */}
-                            <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-[#D4AF37] to-[#F2D785] p-0.5 mb-4 shadow-lg">
+                            <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-[#4A90E2] to-[#BEE3F8] p-0.5 mb-4 shadow-lg shrink-0">
                                 <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-                                    <span className="text-2xl font-black text-[#D4AF37]">K</span>
+                                    <span className="text-2xl font-black text-[#4A90E2]">{initial}</span>
                                 </div>
                             </div>
 
-                            <h2 className="text-xl font-bold text-[#1a1a1a] mb-1">KrisK Campus</h2>
-                            <div className="px-3 py-1 bg-[#D4AF37]/10 rounded-full border border-[#D4AF37]/20 mb-8">
-                                <span className="text-[10px] font-bold text-[#D4AF37] tracking-widest uppercase">Muncheez Gold</span>
+                            <h2 className="text-xl font-bold text-[#1a1a1a] mb-1 truncate max-w-full">
+                                {profile?.full_name || 'Adventurer'}
+                            </h2>
+                            <div className="px-3 py-1 bg-[#4A90E2]/10 rounded-full border border-[#4A90E2]/20 mb-8">
+                                <span className="text-[10px] font-bold text-[#4A90E2] tracking-widest uppercase">
+                                    {profile?.loyalty_tier || 'Standard'}
+                                </span>
                             </div>
 
                             {/* Main Actions Grid */}
                             <div className="grid grid-cols-2 gap-3 w-full mb-6">
-                                <button className="flex flex-col items-center justify-center gap-2 bg-white p-4 rounded-2xl shadow-sm border border-black/5 hover:border-[#D4AF37]/30 hover:shadow-md transition-all group">
-                                    <div className="p-2 rounded-full bg-black/5 group-hover:bg-[#D4AF37]/10 transition-colors">
-                                        <FileText size={20} className="text-black/60 group-hover:text-[#D4AF37]" />
+                                <button className="flex flex-col items-center justify-center gap-2 bg-white p-4 rounded-2xl shadow-sm border border-black/5 hover:border-[#4A90E2]/30 hover:shadow-md transition-all group">
+                                    <div className="p-2 rounded-full bg-black/5 group-hover:bg-[#4A90E2]/10 transition-colors">
+                                        <FileText size={20} className="text-black/60 group-hover:text-[#4A90E2]" />
                                     </div>
                                     <span className="text-xs font-bold text-black/70">My Orders</span>
                                 </button>
-                                <button className="flex flex-col items-center justify-center gap-2 bg-white p-4 rounded-2xl shadow-sm border border-black/5 hover:border-[#D4AF37]/30 hover:shadow-md transition-all group">
-                                    <div className="p-2 rounded-full bg-black/5 group-hover:bg-[#D4AF37]/10 transition-colors">
-                                        <User size={20} className="text-black/60 group-hover:text-[#D4AF37]" />
+                                <button className="flex flex-col items-center justify-center gap-2 bg-white p-4 rounded-2xl shadow-sm border border-black/5 hover:border-[#4A90E2]/30 hover:shadow-md transition-all group">
+                                    <div className="p-2 rounded-full bg-black/5 group-hover:bg-[#4A90E2]/10 transition-colors">
+                                        <User size={20} className="text-black/60 group-hover:text-[#4A90E2]" />
                                     </div>
                                     <span className="text-xs font-bold text-black/70">My Account</span>
                                 </button>
@@ -69,16 +88,19 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
 
                             {/* Secondary Actions */}
                             <div className="w-full flex flex-col gap-1">
-                                <button className="flex items-center gap-4 w-full p-3 rounded-xl hover:bg-white transition-colors group">
+                                <button className="flex items-center gap-4 w-full p-3 rounded-xl hover:bg-white transition-colors group text-left">
                                     <Share2 size={18} className="text-black/40 group-hover:text-black/80" />
                                     <span className="text-sm font-medium text-black/60 group-hover:text-black/80">Share Muncheez</span>
                                 </button>
-                                <button className="flex items-center gap-4 w-full p-3 rounded-xl hover:bg-white transition-colors group">
+                                <button className="flex items-center gap-4 w-full p-3 rounded-xl hover:bg-white transition-colors group text-left">
                                     <HelpCircle size={18} className="text-black/40 group-hover:text-black/80" />
                                     <span className="text-sm font-medium text-black/60 group-hover:text-black/80">Help & Support</span>
                                 </button>
                                 <div className="h-px w-full bg-black/5 my-1" />
-                                <button className="flex items-center gap-4 w-full p-3 rounded-xl hover:bg-red-50 transition-colors group">
+                                <button
+                                    onClick={handleLogout}
+                                    className="flex items-center gap-4 w-full p-3 rounded-xl hover:bg-red-50 transition-colors group text-left"
+                                >
                                     <LogOut size={18} className="text-black/40 group-hover:text-red-500" />
                                     <span className="text-sm font-medium text-black/60 group-hover:text-red-600">Log Out</span>
                                 </button>

@@ -2,8 +2,6 @@ import {
     Search,
     Star,
     AlertTriangle,
-    MessageSquare,
-    History,
     MoreHorizontal,
     Phone,
     MapPin,

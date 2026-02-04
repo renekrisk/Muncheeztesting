@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAuth } from '../context/AuthContext';
 
 export default function Navbar() {
+    const { user } = useAuth();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -12,6 +14,34 @@ export default function Navbar() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const AuthButton = ({ mobile = false }) => {
+        if (user) {
+            return (
+                <Link
+                    to="/c/stores"
+                    onClick={() => mobile && setMobileMenuOpen(false)}
+                    className={`
+                        ${mobile ? 'py-6 text-center text-[10px] font-bold uppercase tracking-[0.5em] bg-[#4A90E2] text-white rounded-full' : 'hidden md:flex items-center justify-center px-10 py-3.5 rounded-full text-[10px] font-bold uppercase tracking-[0.4em] transition-all duration-500 bg-[#4A90E2] text-white hover:scale-[1.02]'}
+                    `}
+                >
+                    ENTER APP
+                </Link>
+            );
+        }
+
+        return (
+            <Link
+                to="/login"
+                onClick={() => mobile && setMobileMenuOpen(false)}
+                className={`
+                    ${mobile ? 'py-6 text-center text-[10px] font-bold uppercase tracking-[0.5em] bg-white text-black rounded-full' : 'hidden md:flex items-center justify-center px-10 py-3.5 rounded-full text-[10px] font-bold uppercase tracking-[0.4em] transition-all duration-500 ' + (scrolled ? 'bg-white text-black hover:bg-[#4A90E2] hover:text-white' : 'bg-white/5 text-white hover:bg-white hover:text-black border border-white/10 hover:border-transparent')}
+                `}
+            >
+                Login
+            </Link>
+        );
+    };
 
     return (
         <>
@@ -65,27 +95,25 @@ export default function Navbar() {
 
                     {/* Right: Login (Desktop & Mobile) */}
                     <div className="flex items-center gap-8">
-                        {/* Desktop Login */}
-                        {/* Desktop Login */}
-                        <Link
-                            to="/login"
-                            className={`
-                                hidden md:flex items-center justify-center px-10 py-3.5 rounded-full text-[10px] font-bold uppercase tracking-[0.4em] transition-all duration-500
-                                ${scrolled
-                                    ? 'bg-white text-black hover:bg-[#4A90E2] hover:text-white'
-                                    : 'bg-white/5 text-white hover:bg-white hover:text-black border border-white/10 hover:border-transparent'}
-                            `}
-                        >
-                            Login
-                        </Link>
+                        <AuthButton />
 
-                        {/* Mobile Login */}
-                        <Link
-                            to="/login"
-                            className="md:hidden text-xs font-bold uppercase tracking-widest text-white hover:text-[#4A90E2] transition-colors"
-                        >
-                            Login
-                        </Link>
+                        {/* Mobile Login Placeholder/Toggle */}
+                        {!user && (
+                            <Link
+                                to="/login"
+                                className="md:hidden text-xs font-bold uppercase tracking-widest text-white hover:text-[#4A90E2] transition-colors"
+                            >
+                                Login
+                            </Link>
+                        )}
+                        {user && (
+                            <Link
+                                to="/c/stores"
+                                className="md:hidden flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#4A90E2]"
+                            >
+                                GO <ArrowRight size={14} />
+                            </Link>
+                        )}
                     </div>
                 </div>
             </motion.nav>
@@ -147,20 +175,16 @@ export default function Navbar() {
                         </div>
 
                         <div className="grid grid-cols-1 gap-4">
-                            <Link
-                                to="/login"
-                                className="py-6 text-center text-[10px] font-bold uppercase tracking-[0.5em] bg-white text-black rounded-full"
-                                onClick={() => setMobileMenuOpen(false)}
-                            >
-                                Login
-                            </Link>
-                            <Link
-                                to="/signup"
-                                className="py-6 text-center text-[10px] font-bold uppercase tracking-[0.5em] border border-white/10 text-white rounded-full"
-                                onClick={() => setMobileMenuOpen(false)}
-                            >
-                                Join the Fam
-                            </Link>
+                            <AuthButton mobile />
+                            {!user && (
+                                <Link
+                                    to="/signup"
+                                    className="py-6 text-center text-[10px] font-bold uppercase tracking-[0.5em] border border-white/10 text-white rounded-full"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    Join the Fam
+                                </Link>
+                            )}
                         </div>
                     </motion.div>
                 )}

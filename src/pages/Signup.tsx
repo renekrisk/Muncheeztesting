@@ -1,9 +1,59 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Loader2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { supabase } from '../lib/supabaseClient';
 
 export default function Signup() {
     const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [fullName, setFullName] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    const handleSignup = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
+
+        try {
+            // 1. Sign up user via Supabase Auth with metadata
+            const { data: authData, error: authError } = await supabase.auth.signUp({
+                email,
+                password,
+                options: {
+                    data: {
+                        full_name: fullName,
+                    }
+                }
+            });
+
+            if (authError) throw authError;
+
+            if (authData.user) {
+                // 2. Create profile in 'profiles' table
+                const { error: profileError } = await supabase
+                    .from('profiles')
+                    .insert([
+                        {
+                            id: authData.user.id,
+                            full_name: fullName,
+                            loyalty_tier: 'Standard',
+                        },
+                    ]);
+
+                if (profileError) throw profileError;
+
+                // 3. Success! Redirect to home or store listing
+                navigate('/c/stores');
+            }
+        } catch (err: any) {
+            setError(err.message || 'An error occurred during signup');
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <div className="min-h-screen bg-white flex overflow-hidden">
@@ -60,7 +110,14 @@ export default function Signup() {
                     transition={{ duration: 0.8 }}
                     className="max-w-md"
                 >
-                    <form className="space-y-8">
+                    {error && (
+                        <div className="mb-6 p-4 bg-red-50 rounded-xl border border-red-100 flex items-center gap-3">
+                            <div className="w-1.5 h-1.5 rounded-full bg-red-400" />
+                            <p className="text-xs font-bold text-red-600 tracking-tight">{error}</p>
+                        </div>
+                    )}
+
+                    <form onSubmit={handleSignup} className="space-y-8">
                         <div>
                             <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
                                 Full Name
@@ -68,6 +125,8 @@ export default function Signup() {
                             <input
                                 type="text"
                                 required
+                                value={fullName}
+                                onChange={(e) => setFullName(e.target.value)}
                                 className="block w-full px-0 py-3 border-b border-gray-100 bg-transparent text-gray-900 placeholder-gray-300 focus:outline-none focus:border-[#4A90E2] sm:text-sm transition-all"
                                 placeholder="Enter your name"
                             />
@@ -80,6 +139,8 @@ export default function Signup() {
                             <input
                                 type="email"
                                 required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 className="block w-full px-0 py-3 border-b border-gray-100 bg-transparent text-gray-900 placeholder-gray-300 focus:outline-none focus:border-[#4A90E2] sm:text-sm transition-all"
                                 placeholder="name@email.com"
                             />
@@ -92,6 +153,8 @@ export default function Signup() {
                             <input
                                 type="password"
                                 required
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 className="block w-full px-0 py-3 border-b border-gray-100 bg-transparent text-gray-900 placeholder-gray-300 focus:outline-none focus:border-[#4A90E2] sm:text-sm transition-all"
                                 placeholder="Create a password"
                             />
@@ -103,10 +166,20 @@ export default function Signup() {
 
                         <button
                             type="submit"
-                            className="group w-full flex justify-between items-center py-5 px-8 rounded-2xl text-sm font-bold text-white bg-gray-900 hover:bg-[#4A90E2] transition-all duration-500 uppercase tracking-widest shadow-xl shadow-gray-200"
+                            disabled={loading}
+                            className="group w-full flex justify-between items-center py-5 px-8 rounded-2xl text-sm font-bold text-white bg-gray-900 hover:bg-[#4A90E2] disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-500 uppercase tracking-widest shadow-xl shadow-gray-200"
                         >
-                            Get Started
-                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                            {loading ? (
+                                <>
+                                    <span>Creating Account...</span>
+                                    <Loader2 size={18} className="animate-spin" />
+                                </>
+                            ) : (
+                                <>
+                                    <span>Get Started</span>
+                                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                </>
+                            )}
                         </button>
                     </form>
 

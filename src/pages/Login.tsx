@@ -1,28 +1,60 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { ArrowRight, ArrowLeft, Loader2 } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { supabase } from '../lib/supabaseClient';
 
 export default function Login() {
     const navigate = useNavigate();
+    const location = useLocation();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    // Get the page they were trying to visit before login
+    const from = (location.state as any)?.from?.pathname || "/c/stores";
+
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
+
+        try {
+            const { error: loginError } = await supabase.auth.signInWithPassword({
+                email,
+                password,
+            });
+
+            if (loginError) throw loginError;
+
+            // Success! Redirect
+            navigate(from, { replace: true });
+        } catch (err: any) {
+            setError(err.message || 'Invalid login credentials');
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <div className="min-h-screen bg-white flex overflow-hidden">
             {/* Left Side: Editorial Image (Desktop Only) */}
             <div className="hidden lg:block lg:w-1/2 relative">
                 <img
-                    src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=2000"
+                    src="https://images.unsplash.com/photo-1549466600-019313cf2010?q=80&w=2000"
                     alt="Nairobi Lifestyle"
                     className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/20" />
                 <div className="absolute bottom-20 left-20 z-10 max-w-lg">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-white/60 mb-6 block">The 254 Selection</span>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-white/60 mb-6 block">Welcome Back</span>
                     <h2 className="text-6xl font-heading font-light text-white leading-[1.1] tracking-tight mb-8">
-                        Taste of <br />
-                        <span className="italic opacity-50">Perfection</span>.
+                        The City <br />
+                        <span className="italic opacity-50">Awaits</span>.
                     </h2>
                     <p className="text-lg text-white/70 font-light leading-relaxed">
-                        Join the collective of Nairobi's finest palates. Your city, served with respect.
+                        Sign in to pick up where you left off. Your favorite spots are just a few clicks away.
                     </p>
                 </div>
             </div>
@@ -45,11 +77,11 @@ export default function Login() {
                             </span>
                         </Link>
                     </div>
-                    <h1 className="text-4xl font-heading font-light text-gray-900 tracking-tight mb-3">Welcome back.</h1>
+                    <h1 className="text-4xl font-heading font-light text-gray-900 tracking-tight mb-3">Welcome Back.</h1>
                     <p className="text-sm text-gray-500">
-                        Enter your details to rejoin the fam. Or{' '}
+                        Don't have an account?{' '}
                         <Link to="/signup" className="font-medium text-[#4A90E2] hover:underline transition-all">
-                            create an account
+                            Sign up now
                         </Link>
                     </p>
                 </div>
@@ -60,7 +92,14 @@ export default function Login() {
                     transition={{ duration: 0.8 }}
                     className="max-w-md"
                 >
-                    <form className="space-y-8">
+                    {error && (
+                        <div className="mb-6 p-4 bg-red-50 rounded-xl border border-red-100 flex items-center gap-3">
+                            <div className="w-1.5 h-1.5 rounded-full bg-red-400" />
+                            <p className="text-xs font-bold text-red-600 tracking-tight">{error}</p>
+                        </div>
+                    )}
+
+                    <form onSubmit={handleLogin} className="space-y-8">
                         <div>
                             <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
                                 Email Address
@@ -68,45 +107,48 @@ export default function Login() {
                             <input
                                 type="email"
                                 required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 className="block w-full px-0 py-3 border-b border-gray-100 bg-transparent text-gray-900 placeholder-gray-300 focus:outline-none focus:border-[#4A90E2] sm:text-sm transition-all"
                                 placeholder="name@email.com"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
-                                Password
-                            </label>
+                            <div className="flex justify-between items-center mb-3">
+                                <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                                    Password
+                                </label>
+                                <a href="#" className="text-[10px] font-bold uppercase tracking-widest text-[#4A90E2] hover:underline">
+                                    Forgot?
+                                </a>
+                            </div>
                             <input
                                 type="password"
                                 required
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 className="block w-full px-0 py-3 border-b border-gray-100 bg-transparent text-gray-900 placeholder-gray-300 focus:outline-none focus:border-[#4A90E2] sm:text-sm transition-all"
                                 placeholder="••••••••"
                             />
                         </div>
 
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center">
-                                <input
-                                    id="remember-me"
-                                    type="checkbox"
-                                    className="h-4 w-4 text-[#4A90E2] focus:ring-[#4A90E2] border-gray-300 rounded"
-                                />
-                                <label htmlFor="remember-me" className="ml-3 block text-xs text-gray-500 hover:text-gray-900 transition-colors">
-                                    Remember me
-                                </label>
-                            </div>
-                            <a href="#" className="text-xs font-medium text-[#4A90E2] hover:underline">
-                                Forgot password?
-                            </a>
-                        </div>
-
                         <button
                             type="submit"
-                            className="group w-full flex justify-between items-center py-5 px-8 rounded-2xl text-sm font-bold text-white bg-gray-900 hover:bg-[#4A90E2] transition-all duration-500 uppercase tracking-widest shadow-xl shadow-gray-200"
+                            disabled={loading}
+                            className="group w-full flex justify-between items-center py-5 px-8 rounded-2xl text-sm font-bold text-white bg-gray-900 hover:bg-[#4A90E2] disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-500 uppercase tracking-widest shadow-xl shadow-gray-200"
                         >
-                            Sign in to Fam
-                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                            {loading ? (
+                                <>
+                                    <span>Signing in...</span>
+                                    <Loader2 size={18} className="animate-spin" />
+                                </>
+                            ) : (
+                                <>
+                                    <span>Sign In</span>
+                                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                </>
+                            )}
                         </button>
                     </form>
 
