@@ -46,7 +46,7 @@ export default function SupermarketStore({ merchant = {}, products = [] }: Super
     const [viewingCategoryDeepDive, setViewingCategoryDeepDive] = useState<string | null>(null);
 
     // Modal & Menu States 
-    const [_userLocation, setUserLocation] = useState('Lavington, Nairobi');
+    const [, setUserLocation] = useState('Lavington, Nairobi');
     const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -98,7 +98,7 @@ export default function SupermarketStore({ merchant = {}, products = [] }: Super
         }
     }, [viewingCategoryDeepDive]);
 
-    const renderProductCard = (product: any, _size: 'mini' | 'standard' = 'mini', isCarousel: boolean = false) => {
+    const renderProductCard = (product: any, isCarousel: boolean = false) => {
         const cartItem = items.find(i => i.id === product.id);
         const quantity = cartItem ? cartItem.quantity : 0;
         const hasDiscount = product.promo || product.id.includes('discount');
@@ -390,7 +390,7 @@ export default function SupermarketStore({ merchant = {}, products = [] }: Super
                                                     ? (p.categoryId === 'Featured items' || p.isFeatured)
                                                     : p.categoryId === viewingCategoryDeepDive
                                                 )
-                                                .map(p => renderProductCard(p, 'mini', false))}
+                                                .map(p => renderProductCard(p, false))}
                                         </div>
                                     </motion.div>
                                 ) : (
@@ -413,7 +413,7 @@ export default function SupermarketStore({ merchant = {}, products = [] }: Super
                                             <div className="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-8 flex-nowrap -mx-2 px-2">
                                                 {featuredItems.map((product) => (
                                                     <div key={product.id} className="shrink-0 w-[240px] md:w-[280px] snap-start">
-                                                        {renderProductCard(product, 'mini', true)}
+                                                        {renderProductCard(product, true)}
                                                     </div>
                                                 ))}
                                             </div>
@@ -442,7 +442,7 @@ export default function SupermarketStore({ merchant = {}, products = [] }: Super
                                                             </div>
                                                         </div>
                                                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                                                            {itemsToDisplay.map(product => renderProductCard(product, 'mini', false))}
+                                                            {itemsToDisplay.map(product => renderProductCard(product, false))}
                                                         </div>
                                                     </motion.div>
                                                 );
