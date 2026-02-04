@@ -13,6 +13,10 @@ import AdminLogin from "./pages/AdminLogin";
 import WelcomeScreen from "./components/WelcomeScreen";
 import ComingSoon from "./pages/ComingSoon";
 import OurStory from "./pages/OurStory";
+import MerchantDashboard from "./pages/MerchantDashboard";
+import MerchantOnboarding from './pages/MerchantOnboarding';
+import StoreListing from './pages/customer/StoreListing';
+import StoreFront from './pages/customer/StoreFront';
 
 function AppContent() {
   const location = useLocation();
@@ -24,6 +28,11 @@ function AppContent() {
       {showNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
+
+        {/* Customer Routes (The Genesis Loop) */}
+        <Route path="/c/stores" element={<StoreListing />} />
+        <Route path="/c/store/:id" element={<StoreFront />} />
+
         <Route path="/social" element={<ComingSoon />} />
         <Route path="/our-story" element={<OurStory />} />
         <Route path="/coming-soon" element={<ComingSoon />} />
@@ -34,6 +43,8 @@ function AppContent() {
         {/* Partner Auth */}
         <Route path="/partner/login" element={<PartnerLogin />} />
         <Route path="/partner/signup" element={<PartnerSignup />} />
+        <Route path="/partner/onboarding" element={<MerchantOnboarding />} />
+        <Route path="/partner/dashboard" element={<MerchantDashboard />} />
         {/* Courier Auth */}
         <Route path="/courier/login" element={<CourierLogin />} />
         <Route path="/courier/signup" element={<CourierSignup />} />

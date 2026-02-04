@@ -109,8 +109,7 @@ export default function Collections() {
                                 className={`relative group shrink-0 w-[85vw] sm:w-[350px] lg:w-auto snap-center ${item.span}`}
                             >
                                 <Link
-                                    to="/coming-soon"
-                                    state={{ name: item.name, status: 'coming soon' }}
+                                    to={`/c/stores?v=kitchen&tag=${item.name.toLowerCase().replace(' ', '-')}`}
                                     className="block h-full w-full"
                                 >
                                     <div className="relative h-full overflow-hidden rounded-[2rem] bg-gray-900 shadow-xl isolate">

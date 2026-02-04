@@ -1,8 +1,17 @@
 import { motion } from 'framer-motion';
 import { Mail, ArrowRight, Store, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function PartnerSignup() {
+    const navigate = useNavigate();
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        // In a real app, we would create the account here.
+        // For now, we proceed to the onboarding wizard.
+        navigate('/partner/onboarding');
+    };
+
     return (
         <div className="min-h-screen bg-[#FDFBF7] flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden">
             {/* Architectural Grid Background */}
@@ -38,7 +47,7 @@ export default function PartnerSignup() {
                 className="mt-12 sm:mx-auto sm:w-full sm:max-w-md relative z-10"
             >
                 <div className="bg-white py-12 px-8 shadow-[0_48px_96px_-32px_rgba(212,175,55,0.15)] border border-[#D4AF37]/10 sm:rounded-[2.5rem] sm:px-12 ring-1 ring-black/5">
-                    <form className="space-y-8">
+                    <form className="space-y-8" onSubmit={handleSubmit}>
                         <div>
                             <label className="block text-[10px] font-bold uppercase tracking-[0.3em] text-[#D4AF37] mb-3">
                                 Business Name

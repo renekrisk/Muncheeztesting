@@ -6,7 +6,7 @@ import googlePlayIcon from '../assets/google-play-icon.png';
 
 export default function Footer() {
     return (
-        <footer className="bg-black pt-20 pb-10 text-white" id="contact">
+        <footer className="bg-black pt-20 pb-10 text-white relative z-50" id="contact">
             <div className="container">
 
                 {/* Newsletter - Soulful Update */}
@@ -36,7 +36,7 @@ export default function Footer() {
                     {/* Identity - Compact Branding */}
                     <div className="col-span-2 lg:col-span-1 border-b lg:border-none border-white/5 pb-10 lg:pb-0">
                         <Link to="/" className="flex items-center gap-2 mb-6">
-                            <span className="font-heading font-extrabold text-xl tracking-tighter text-white">
+                            <span className="font-heading font-bold text-2xl tracking-tighter text-white">
                                 Muncheez<span className="text-[#4A90E2]">.</span>
                             </span>
                         </Link>

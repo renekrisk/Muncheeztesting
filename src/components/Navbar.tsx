@@ -66,6 +66,7 @@ export default function Navbar() {
                     {/* Right: Login (Desktop & Mobile) */}
                     <div className="flex items-center gap-8">
                         {/* Desktop Login */}
+                        {/* Desktop Login */}
                         <Link
                             to="/login"
                             className={`
@@ -164,6 +165,7 @@ export default function Navbar() {
                     </motion.div>
                 )}
             </AnimatePresence>
+
         </>
     );
 }

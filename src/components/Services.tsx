@@ -130,8 +130,7 @@ export default function Services() {
                                                     {item.description}
                                                 </p>
                                                 <Link
-                                                    to="/coming-soon"
-                                                    state={{ name: item.category, status: 'coming soon' }}
+                                                    to={`/c/stores?v=${item.title === 'The Kitchens' ? 'kitchen' : item.title === 'The Market' ? 'market' : item.title === 'Bakes & Blooms' ? 'bakes' : 'apothecary'}`}
                                                     className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white hover:text-white/80 transition-colors group/btn"
                                                 >
                                                     Explore
