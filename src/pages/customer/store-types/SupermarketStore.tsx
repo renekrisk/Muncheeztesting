@@ -46,7 +46,7 @@ export default function SupermarketStore({ merchant = {}, products = [] }: Super
     const [viewingCategoryDeepDive, setViewingCategoryDeepDive] = useState<string | null>(null);
 
     // Modal & Menu States 
-        const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
+    const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -459,7 +459,7 @@ export default function SupermarketStore({ merchant = {}, products = [] }: Super
 
             <Footer />
 
-            <LocationModal isOpen={isLocationModalOpen} onClose={() => setIsLocationModalOpen(false)} onSelectLocation={(loc) => { setIsLocationModalOpen(false); }} />
+            <LocationModal isOpen={isLocationModalOpen} onClose={() => setIsLocationModalOpen(false)} onSelectLocation={() => { setIsLocationModalOpen(false); }} />
             <ProfileModal isOpen={isProfileOpen} onClose={() => setIsProfileOpen(false)} />
 
             {/* NEW GLASS CART (SHARED COMPONENT) */}
