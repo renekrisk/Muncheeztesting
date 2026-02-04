@@ -1,14 +1,9 @@
 import {
     Truck,
-    Package,
-    Search,
-    Filter,
-    ChevronRight,
-    Plus,
+    Bike,
     Phone,
     AlertTriangle,
-    RefreshCw,
-    Bike
+    RefreshCw
 } from 'lucide-react';
 
 export default function DeliveriesView() {

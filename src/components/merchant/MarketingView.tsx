@@ -1,10 +1,9 @@
 import {
     TrendingUp,
     Users,
-    ArrowUpRight,
-    Calendar,
     ChevronRight,
-    Plus
+    Plus,
+    Gift
 } from 'lucide-react';
 
 export default function MarketingView() {

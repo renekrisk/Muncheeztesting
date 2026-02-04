@@ -143,7 +143,7 @@ export const MockDatabaseProvider = ({ children }: { children: ReactNode }) => {
 
     // SELECTORS
     const getMerchantProducts = (merchantId: string) => products.filter(p => p.merchantId === merchantId);
-    const getMerchantOrders = () => orders.filter(() => true);
+    const getMerchantOrders = (_merchantId: string) => orders;
 
     return (
         <MockDatabaseContext.Provider value={{

@@ -1,4 +1,3 @@
-```
 import {
     Users,
     Search,
@@ -7,7 +6,11 @@ import {
     Star,
     Mail,
     Plus,
-    MoreHorizontal
+    MoreHorizontal,
+    Phone,
+    MapPin,
+    ShieldAlert,
+    AlertTriangle
 } from 'lucide-react';
 
 export default function CustomersView() {
