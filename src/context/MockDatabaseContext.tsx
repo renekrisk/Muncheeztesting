@@ -73,7 +73,7 @@ export const MockDatabaseProvider = ({ children }: { children: ReactNode }) => {
     ]);
 
     // 2. SEED DATA - PRODUCTS
-    const [products] = useState<Product[]>([
+    const products: Product[] = [
         // Java House Items (Java House Uber Eats Seeding)
         { id: 'p1', merchantId: 'm1', name: 'Java Special Chicken Curry', price: 1110, isAvailable: true, categoryId: 'Featured items', description: '#1 most liked' },
         { id: 'p2', merchantId: 'm1', name: 'Teriyaki Beef Stir Fry', price: 1270, isAvailable: true, categoryId: 'Featured items', description: '#2 most liked' },
@@ -117,7 +117,7 @@ export const MockDatabaseProvider = ({ children }: { children: ReactNode }) => {
         { id: 'p36', merchantId: 'm3', name: 'Antiseptic Liquid 500ml', price: 850, isAvailable: true, stockLevel: 25, sku: 'AID-DET', categoryId: 'First Aid' },
         { id: 'p37', merchantId: 'm3', name: 'Gentle Baby Wipes (80pk)', price: 650, isAvailable: true, stockLevel: 40, sku: 'BBY-WIPE', categoryId: 'Baby & Child' },
         { id: 'p38', merchantId: 'm3', name: 'Hydrating Face Serum', price: 2400, isAvailable: true, stockLevel: 12, sku: 'SKN-SER', categoryId: 'Personal Care' },
-    ]);
+    ];
 
     // 3. SEED DATA - ORDERS (Shared Global State)
     const [orders, setOrders] = useState<Order[]>([]);
@@ -143,7 +143,7 @@ export const MockDatabaseProvider = ({ children }: { children: ReactNode }) => {
 
     // SELECTORS
     const getMerchantProducts = (merchantId: string) => products.filter(p => p.merchantId === merchantId);
-    const getMerchantOrders = (_merchantId: string) => orders;
+    const getMerchantOrders = () => orders;
 
     return (
         <MockDatabaseContext.Provider value={{

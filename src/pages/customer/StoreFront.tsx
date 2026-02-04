@@ -32,7 +32,6 @@ export default function StoreFront() {
     const { items: cartItems, addItem, updateQuantity, removeItem, merchantId: cartMerchantId, clearCart, total, itemCount } = useCart();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [, setIsProfileOpen] = useState(false);
     const [isCheckingOut, setIsCheckingOut] = useState(false);
     const [orderSuccess, setOrderSuccess] = useState<string | null>(null);
     const [showConflictModal, setShowConflictModal] = useState<{ product: any } | null>(null);
