@@ -460,7 +460,7 @@ export default function SupermarketStore({ merchant = {}, products = [] }: Super
 
             <Footer />
 
-            <LocationModal isOpen={isLocationModalOpen} onClose={() => setIsLocationModalOpen(false)} onSelectLocation={(loc) => { setUserLocation(loc); setIsLocationModalOpen(false); }} />
+            <LocationModal isOpen={isLocationModalOpen} onClose={() => setIsLocationModalOpen(false)} onSelectLocation={(loc) => { setIsLocationModalOpen(false); }} />
             <ProfileModal isOpen={isProfileOpen} onClose={() => setIsProfileOpen(false)} />
 
             {/* NEW GLASS CART (SHARED COMPONENT) */}
