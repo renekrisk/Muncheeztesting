@@ -1,5 +1,4 @@
 import {
-    Truck,
     Bike,
     Phone,
     AlertTriangle,

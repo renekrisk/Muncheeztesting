@@ -7,7 +7,6 @@ import {
     MoreVertical,
     Printer,
     Truck,
-    AlertCircle,
     ShoppingBag
 } from 'lucide-react';
 
@@ -57,8 +56,8 @@ export default function OrdersView({ orders, onUpdateStatus }: OrdersViewProps) 
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
                             className={`px-6 py-3 text-[10px] font-bold uppercase tracking-widest transition-all ${activeTab === tab.id
-                                    ? 'bg-black text-white'
-                                    : 'bg-white border border-gray-100 text-gray-400 hover:text-black hover:border-black'
+                                ? 'bg-black text-white'
+                                : 'bg-white border border-gray-100 text-gray-400 hover:text-black hover:border-black'
                                 }`}
                         >
                             {tab.label}
