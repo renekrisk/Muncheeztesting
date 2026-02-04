@@ -1,20 +1,13 @@
-import { useState } from 'react';
 import {
     Search,
     Plus,
     Upload,
-    Archive,
     Edit3,
     Trash2,
-    Filter,
-    Tag,
     Barcode,
-    FileSpreadsheet,
-    UtensilsCrossed,
-    ShoppingCart,
-    ChevronRight
+    ChevronRight,
+    ShoppingCart
 } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export type MerchantType = 'Restaurant' | 'Supermarket' | 'Pharmacy' | 'Water' | 'Flowers';
 
@@ -35,9 +28,9 @@ export default function ProductsView({ merchantType }: ProductsViewProps) {
 
             {/* MAIN CONTENT SPLIT */}
             {merchantType === 'Supermarket' || merchantType === 'Pharmacy' ? (
-                <RetailInventoryView type={merchantType} />
+                <RetailInventoryView />
             ) : (
-                <RestaurantMenuView type={merchantType} />
+                <RestaurantMenuView merchantType={merchantType} />
             )}
         </div>
     );
@@ -46,7 +39,7 @@ export default function ProductsView({ merchantType }: ProductsViewProps) {
 // ==========================================
 // 1. RETAIL / SUPERMARKET VIEW (Industrial Ledger)
 // ==========================================
-function RetailInventoryView({ type: _type }: { type: MerchantType }) {
+function RetailInventoryView() {
     return (
         <div className="space-y-8">
             {/* Tools Panel */}
@@ -152,7 +145,7 @@ function RetailInventoryView({ type: _type }: { type: MerchantType }) {
 // ==========================================
 // 2. RESTAURANT VIEW (Menu Board)
 // ==========================================
-function RestaurantMenuView({ type }: { type: MerchantType }) {
+function RestaurantMenuView({ merchantType }: { merchantType: MerchantType }) {
     return (
         <div className="space-y-10">
             {/* Categories */}
@@ -200,7 +193,7 @@ function RestaurantMenuView({ type }: { type: MerchantType }) {
                 </div>
 
                 {/* Item Card 2 (Water / Bulk Logic Example) */}
-                {type === 'Water' && (
+                {merchantType === 'Water' && (
                     <div className="group cursor-pointer">
                         <div className="relative aspect-[4/3] bg-blue-50/50 mb-6 overflow-hidden flex items-center justify-center border border-blue-100/50">
                             <ShoppingCart size={48} className="text-blue-200 group-hover:text-blue-500 transition-colors" />

@@ -143,15 +143,7 @@ export const MockDatabaseProvider = ({ children }: { children: ReactNode }) => {
 
     // SELECTORS
     const getMerchantProducts = (merchantId: string) => products.filter(p => p.merchantId === merchantId);
-    const getMerchantOrders = (_merchantId: string) => orders.filter(_o => {
-        // In a real app, orders belong to a merchant. 
-        // Our schema doesn't explicitly have merchantId on Order top-level yet (it's implicit),
-        // but for this mock we need to filter? 
-        // Actually, let's assume all orders shown are for the 'Active' merchant context in dashboard.
-        // For accurate Mocking, let's add merchantId to Order items or Order itself if missing.
-        // For now, returning ALL orders to simplify the 'Genesis Loop' demo.
-        return true;
-    });
+    const getMerchantOrders = () => orders.filter(() => true);
 
     return (
         <MockDatabaseContext.Provider value={{
