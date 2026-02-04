@@ -217,7 +217,7 @@ export default function StoreFront() {
                         )}
                         {/* Profile Button */}
                         <button
-                            onClick={() => setIsProfileOpen(true)}
+                            onClick={() => { }}
                             className="w-10 h-10 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-all"
                         >
                             <User size={20} />
@@ -666,3 +666,4 @@ function RetailGrid({ items, isBlocked, cartItems, onAdd, onUpdateQty }: ViewPro
         </div>
     );
 }
+

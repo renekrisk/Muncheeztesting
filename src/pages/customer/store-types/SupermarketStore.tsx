@@ -46,8 +46,7 @@ export default function SupermarketStore({ merchant = {}, products = [] }: Super
     const [viewingCategoryDeepDive, setViewingCategoryDeepDive] = useState<string | null>(null);
 
     // Modal & Menu States 
-    const userLocation = 'Lavington, Nairobi';
-    const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
+        const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -468,3 +467,4 @@ export default function SupermarketStore({ merchant = {}, products = [] }: Super
         </div>
     );
 }
+
